@@ -8,7 +8,7 @@ export default class App extends React.Component {
     render() {
         return (
             <>
-                <Title title={this.props.passedPropTitle} />
+                {/* <Title title={this.props.passedPropTitle} /> */}
                 <Login />
             </>
         );
