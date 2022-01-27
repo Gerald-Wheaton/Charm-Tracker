@@ -7,7 +7,14 @@ export default class Login extends React.Component {
         return (
             <div>
                 <LoginHeader />
-                <p>login</p>
+                <form class='login'>
+                    <label for='username'>Username</label>
+                    <input type='text' id='username' name='username'></input>
+                    <label for='password'>Password</label>
+                    <input type='text' id='password' name='password'></input>
+                    <a href='#' class='login-link'>Forgot Password?</a>
+                    <input type='submit'></input>
+                </form>
             </div>
         );
     }
