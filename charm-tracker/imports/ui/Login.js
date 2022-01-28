@@ -5,15 +5,15 @@ import LoginHeader from './LoginHeader';
 export default class Login extends React.Component {
     render() { // OAuth URI is not compatable with localhost:3000
         return (
-            <div>
+            <div className='login'>
                 <LoginHeader />
-                <form class='login'>
-                    <label for='username'>Username</label>
+                <form className='login'>
+                    <label>Username</label>
                     <input type='text' id='username' name='username'></input>
-                    <label for='password'>Password</label>
+                    <label>Password</label>
                     <input type='text' id='password' name='password'></input>
-                    <a href='#' class='login-link'>Forgot Password?</a>
-                    <input type='submit'></input>
+                    <a href='#' className='login-link'>Forgot Password?</a>
+                    <input type='submit' id='login'></input>
                 </form>
             </div>
         );

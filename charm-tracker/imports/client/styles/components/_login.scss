@@ -1,0 +1,38 @@
+div.login {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-left: auto;
+    margin-right: auto;
+    .login-header {
+        grid-column: 5/10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    form.login {
+        grid-column: 5/10;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-left: auto;
+        margin-right: auto;
+
+        label {
+            grid-column: 2/5;
+
+        }
+        input {
+            border-radius: 15px;
+            padding: 15px;
+            grid-column: 2/5;
+
+        }
+        #login {
+            border-radius: 15px;
+            padding: 15px;
+
+        }
+    }
+}
+.login-link {
+    color: $text-color-emphasis;
+}
