@@ -11,7 +11,7 @@ export default class Login extends React.Component {
                     <label>Username</label>
                     <input type='text' id='username' name='username'></input>
                     <label>Password</label>
-                    <input type='text' id='password' name='password'></input>
+                    <input type='password' id='password' name='password'></input>
                     <a href='#' className='login-link'>Forgot Password?</a>
                     <input type='submit' id='login'></input>
                 </form>
