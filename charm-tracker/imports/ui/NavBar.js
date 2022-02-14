@@ -3,34 +3,34 @@ import { Link } from "react-router-dom"
 
 const NavBar = () => {
   return (
-    <div>
+    <nav>
       <ul>
         <li>
-          <Link to="/Calendar">Calendar</Link>
+          <Link to="/calendar">Calendar</Link>
         </li>
         <li>
-          <Link to="CreateNewEvent">Create New Event</Link>
+          <Link to="/create-new-event">Create New Event</Link>
         </li>
         <li>
-          <Link to="PaymentManagement">Payment Management</Link>
+          <Link to="/payment-management">Payment Management</Link>
         </li>
         <li>
-          <Link to="EditVendors">Edit Vendors</Link>
+          <Link to="/edit-vendors">Edit Vendors</Link>
         </li>
         <li>
-          <Link to="Reports">Reports</Link>
+          <Link to="/reports">Reports</Link>
         </li>
         <li>
-          <Link to="RemoveEvents">Remove Events</Link>
+          <Link to="/remove-events">Remove Events</Link>
         </li>
         <li>
-          <Link to="ActivityStream">Activity Stream</Link>
+          <Link to="/activity-stream">Activity Stream</Link>
         </li>
         <li>
-          <Link to="Logout">Logout</Link>
+          <Link to="/logout">Logout</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }
 
