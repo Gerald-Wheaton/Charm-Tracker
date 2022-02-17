@@ -24,5 +24,10 @@ h1 {
   font-size: 2em;
 }
 
-@import 'components/login';
+// mobile styles
 @import 'mobile/loginMobile';
+@import 'mobile/navMobile';
+
+// web styles
+@import 'components/login';
+@import 'components/nav';
