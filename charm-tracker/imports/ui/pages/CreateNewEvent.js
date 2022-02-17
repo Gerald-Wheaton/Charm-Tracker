@@ -1,9 +1,12 @@
 import React from "react"
+import ContactDetailsForm from "../ContactDetailsForm"
+import EventDetailsForm from "../EventDetailsForm"
 
 const CreateNewEvent = () => {
   return (
     <div>
-      <h1>This is Teh Fricken CreateNewEvent</h1>
+      <ContactDetailsForm />
+      <EventDetailsForm />
     </div>
   )
 }
