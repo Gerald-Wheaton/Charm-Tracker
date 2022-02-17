@@ -27,7 +27,7 @@ Meteor.startup(() => {
       return clientCollection.find();
     });
 
-    //Synchronize 'clients' collection with every subscriber
+    //Synchronize 'vendors' collection with every subscriber
     Meteor.publish("vendors/all", function() {
       return vendorCollection.find();
     });
