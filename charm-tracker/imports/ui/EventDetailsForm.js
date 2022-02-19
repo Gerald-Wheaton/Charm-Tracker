@@ -4,29 +4,29 @@ const EventDetailsForm = () => {
   return (
     <div>
       <form>
-        <fieldset>
+        <fieldset className="EventDetails">
           <legend>Event Details</legend>
           <div>
             <label>
-              Date
+              Date <br />
               <input type="date" id="date" name="date"></input>
             </label>
           </div>
           <div>
             <label>
-              Start Time
+              Start Time <br />
               <input type="time" id="startTime" name="startTime"></input>
             </label>
           </div>
           <div>
             <label>
-              Start Time
+              Start Time <br />
               <input type="time" id="stopTime" name="stopTime"></input>
             </label>
           </div>
           <div>
             <label>
-              Price of Event
+              Price of Event <br />
               <input type="input" id="price" name="price"></input>
             </label>
           </div>
