@@ -1,11 +1,14 @@
 import React from "react"
 import Header from "../Header"
+import VendorType from "../VendorType"
+import { vendorCollection } from "../../api/vendor"
 
 const EditVendors = () => {
+
+  let vendors = vendorCollection.find({ post: postID }, { sort: { votes: -1 } }).fetch();
   return (
     <div>
       <Header title="Edit Vendors" />
-      <h1>This is Teh Fricken EditVendors</h1>
     </div>
   )
 }
