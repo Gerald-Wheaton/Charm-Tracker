@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { eventCollection } from './../imports/api/events';
 import { clientCollection } from './../imports/api/clients';
-import { vendorCollection} from './../imports/api/vendor';
+import { vendorCollection} from '../imports/api/vendors';
 import { vendorTypeCollection } from '../imports/api/vendorTypes';
 
 function insertEvent({ date, startTime, endTime, price }) {

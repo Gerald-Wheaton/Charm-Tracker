@@ -1,5 +1,5 @@
 import React from "react"
-import { vendorCollection } from "../api/vendor";
+import { vendorCollection } from "../api/vendors";
 
 
 // let postID = this.props.post._id;

@@ -1,7 +1,7 @@
 import React from "react"
 import Header from "../Header"
 import VendorType from "../VendorType"
-import { vendorCollection } from "../../api/vendor"
+import { vendorCollection } from "../../api/vendors"
 
 const EditVendors = () => {
 
