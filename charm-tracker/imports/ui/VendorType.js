@@ -32,12 +32,24 @@ import { vendorCollection } from "../api/vendors";
 //     </>
 
 const VendorType = (props) => {
-    const { vendorType, vendorNames } = props;
+    const { vendorTypeID, vendorTypeName } = props;
+
+    // get the vendors with the passed in type
+    let vendors = vendorCollection.find({ vendorType: vendorTypeID }).fetch();
+
+    // render the names of the vendors along with the delete functions for them
+    function renderVendorList(passed_vendors) {
+        passed_vendors.map((vendor) => {
+            return <VendorType vendorTypeID={vendor._id} vendorTypeName={vendor.name} />
+        });
+    }
+
+    // return the component
     return (
         <div>
             <form>
                 <fieldset className="vendor">
-                    <legend>{vendorType}</legend>
+                    <legend>{vendorTypeName}</legend>
                 </fieldset>
             </form>
         </div>
