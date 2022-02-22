@@ -27,7 +27,7 @@ function insertVendors({vendorType}) {
 Meteor.startup(() => {
     //Synchronize 'events' collection with every subscriber
     Meteor.publish("events/all", function() {
-      return eventsCollection.find();
+      return eventCollection.find();
     });
 
     //Synchronize 'clients' collection with every subscriber
