@@ -1,7 +1,8 @@
 import React from "react";
 import { vendorCollection } from "../api/vendors";
 
-const VendorType = (props) => {
+// will output the list of vendors of that type along with an input to add more and the ability to delete current vendors
+const VendorTypeList = (props) => {
   const { vendorTypeID, vendorTypeName } = props;
 
   // get the vendors with the passed in type
@@ -54,4 +55,4 @@ const VendorType = (props) => {
   );
 };
 
-export default VendorType;
+export default VendorTypeList;

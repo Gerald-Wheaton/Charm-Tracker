@@ -1,7 +1,8 @@
 import React from "react"
 import Header from "../Header"
-import VendorType from "../VendorType"
+import VendorTypeList from "../VendorTypeList"
 import { vendorTypeCollection } from "../../api/vendorTypes"
+import AddVendorType from "../AddVendorTypes"
 
 const EditVendors = () => {
 
@@ -14,8 +15,11 @@ const EditVendors = () => {
 
       {/* render the vendortype form for each vendor type */}
       {vendors.map((vendor) => {
-        <VendorType vendorTypeID={vendor._id} vendorTypeName={vendor.name} />
+        <VendorTypeList vendorTypeID={vendor._id} vendorTypeName={vendor.name} />
       })}
+
+      {/* Form for adding vendor types */}
+      <AddVendorType />
     </div>
   )
 }
