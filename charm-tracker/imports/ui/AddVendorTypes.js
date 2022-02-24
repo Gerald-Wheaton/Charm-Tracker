@@ -8,23 +8,25 @@ const AddVendorType = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        let newVendorType = event.target.vendorTypeName.value; // FIXME error is appearing here. says cannot read value of undefined
+        let newVendorType = event.target.vendorTypeName.value
+        console.log(newVendorType)
         if (newVendorType) {
             event.target.vendorTypeName.value = "";
             vendorTypeCollection.insert({
                 createdAt: Date.now(),
                 name: newVendorType,
             });
+            console.log("Vendor Type added")
         }
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <fieldset>
                     <legend>Add Vendor Type</legend>
                     <input type="text" name="vendorTypeName"></input>
-                    <button onClick={handleSubmit}>Add Vendor Type</button>
+                    <button>Add Vendor Type</button>
                 </fieldset>
             </form>
         </div>

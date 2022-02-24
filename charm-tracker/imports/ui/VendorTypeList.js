@@ -4,6 +4,9 @@ import { vendorCollection } from "../api/vendors";
 // will output the list of vendors of that type along with an input to add more and the ability to delete current vendors
 const VendorTypeList = (props) => {
   const { vendorTypeID, vendorTypeName } = props;
+  console.log("hello from vendor type list")
+  console.log("vendorTypeID: ", vendorTypeID)
+  console.log("VendorTypeName: ", vendorTypeName)
 
   // get the vendors with the passed in type
   let vendors = vendorCollection.find({ vendorType: vendorTypeID }).fetch();
