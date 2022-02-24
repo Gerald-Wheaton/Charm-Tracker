@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ContactDetailsForm from "../ContactDetailsForm";
 import EventDetailsForm from "../EventDetailsForm";
 import Header from "../Header";
+import { eventCollection } from "../../api/events";
 
 /* 
 This component uses the ContactDetailsForm and the EventDetailsForm and wraps them in this component 
@@ -13,6 +14,30 @@ Both form components are wrapped in a form component. This is an area that will 
 const CreateNewEvent = () => {
   const [previousCustomer, setPreviousCustomer] = useState();
   // this will need some refactoring to pull the previous customers from the database and add them to selections
+  
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    let newEventDate = event.target.EventDetailsForm.date
+    let newEventStartTime = event.target.EventDetailsForm.startTime
+    let newEventEndTime = event.target.EventDetailsForm.stopTime
+    let newEventPrice = event.target.EventDetailsForm.price
+    console.log(newEvent)
+    if (newVendorType) {
+      event.target.EventDetailsForm.date = ""
+      event.target.EventDetailsForm.startTime = ""
+      event.target.EventDetailsForm.stopTime = ""
+      event.target.EventDetailsForm.price = ""
+        eventCollection.insert({
+            createdAt: Date.now(),
+            date: newEventDate,
+            startTime : newEventStartTime,
+            endTime : newEventEndTime,
+            price : newEventPrice,
+        });
+        console.log("Event added")
+    }
+  }
+  
   return (
     <div>
       <Header title="Create New Event" />
