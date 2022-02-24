@@ -4,17 +4,36 @@ import { vendorCollection } from "../api/vendors";
 // will output the list of vendors of that type along with an input to add more and the ability to delete current vendors
 const VendorTypeList = (props) => {
   const { vendorTypeID, vendorTypeName } = props;
-  console.log("hello from vendor type list")
-  console.log("vendorTypeID: ", vendorTypeID)
-  console.log("VendorTypeName: ", vendorTypeName)
+
+  //handles form and adds value to db 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let newVendor = event.target.vendorName.value;
+    console.log(newVendor)
+    try {
+      if (newVendor) {
+        event.target.vendorName.value = "";
+        vendorCollection.insert({  //not actually adding users
+          createdAt: Date.now(),
+          name: newVendor,
+          type: vendorTypeID,
+        });
+        console.log("vendor added to list")
+      }
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
 
   // get the vendors with the passed in type
   let vendors = vendorCollection.find({ vendorType: vendorTypeID }).fetch();
+  console.log(vendors)
 
   // return the component
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <fieldset className="vendor">
           <legend>{vendorTypeName}</legend>
 
@@ -36,20 +55,7 @@ const VendorTypeList = (props) => {
 
           {/* input and submit vendor names */}
           <input type="text" name="vendorName" />
-          <button
-            onClick={(event) => {
-              event.preventDefault();
-              let newVendor = event.target.vendorName.value;
-              if (newVendor) {
-                event.target.topicFromForm.value = "";
-                vendorCollection.insert({
-                  createdAt: Date.now(),
-                  name: newVendor,
-                  type: vendorTypeID,
-                });
-              }
-            }}
-          >
+          <button>
             Add {vendorTypeName}
           </button>
         </fieldset>
