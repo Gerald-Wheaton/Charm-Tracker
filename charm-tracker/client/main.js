@@ -14,7 +14,6 @@ import App from "./../imports/ui/App.js"
 Meteor.startup(function () {
   Tracker.autorun(function () {
     let title = "Charm Tracker"
-    // const allPostInDB = UP_Collection_Access.find({}, { sort: { createdAt: -1 } }).fetch();
 
     ReactDom.render(
       <App title={title} /*passedPropTitle={title}*/ />,

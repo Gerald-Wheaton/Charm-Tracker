@@ -14,7 +14,6 @@ const VendorTypeList = (props) => {
       if (newVendor) {
         event.target.vendorName.value = "";
         vendorCollection.insert({
-          //not actually adding users
           createdAt: Date.now(),
           name: newVendor,
           type: vendorTypeID,
@@ -28,7 +27,6 @@ const VendorTypeList = (props) => {
 
   // get the vendors with the passed in type
   let vendors = vendorCollection.find({ type: vendorTypeID }).fetch();
-  let allvendors = vendorCollection.find({}).fetch();
   console.log(allvendors);
 
   // return the component

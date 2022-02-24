@@ -16,7 +16,7 @@ const EditVendors = () => {
       {/* render the vendortype form for each vendor type */}
       {vendors.map((vendor) => {
         return(
-          <VendorTypeList key={vendor._id} vendorTypeID={vendor._id} vendorTypeName={vendor.name} /> /* error appearing here*/
+          <VendorTypeList key={vendor._id} vendorTypeID={vendor._id} vendorTypeName={vendor.name} /> 
         )
       })}
 
