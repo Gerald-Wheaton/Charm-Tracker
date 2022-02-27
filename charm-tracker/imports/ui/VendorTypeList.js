@@ -27,7 +27,6 @@ const VendorTypeList = (props) => {
 
   // get the vendors with the passed in type
   let vendors = vendorCollection.find({ type: vendorTypeID }).fetch();
-  console.log(allvendors);
 
   // return the component
   return (
