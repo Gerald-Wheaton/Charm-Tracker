@@ -18,7 +18,7 @@ Current Version: 0.28
 ## Technologies
 Code info here (what packages we using, module list/description)
 # Packages used:
-* @babel/runtime - version 7.15.4
+* [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) - version 7.15.4
 * meteor-node-stubs - version 1.1.0
 * prop-types - version 15.8.1
 * react - version 17.0.2
