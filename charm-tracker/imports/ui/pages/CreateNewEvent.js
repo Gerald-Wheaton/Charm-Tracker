@@ -22,20 +22,14 @@ const CreateNewEvent = () => {
     let newEventEndTime = event.target.EventDetailsForm.stopTime
     let newEventPrice = event.target.EventDetailsForm.price
     console.log(newEvent)
-    if (newVendorType) {
-      event.target.EventDetailsForm.date = ""
-      event.target.EventDetailsForm.startTime = ""
-      event.target.EventDetailsForm.stopTime = ""
-      event.target.EventDetailsForm.price = ""
-        eventCollection.insert({
-            createdAt: Date.now(),
-            date: newEventDate,
-            startTime : newEventStartTime,
-            endTime : newEventEndTime,
-            price : newEventPrice,
-        });
-        console.log("Event added")
-    }
+    eventCollection.insert({
+        createdAt: Date.now(),
+        date: newEventDate,
+        startTime : newEventStartTime,
+        endTime : newEventEndTime,
+        price : newEventPrice,
+    });
+    console.log("Event added")
   }
   
   return (
