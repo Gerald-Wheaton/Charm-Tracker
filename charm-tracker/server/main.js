@@ -6,14 +6,14 @@ import { vendorCollection} from '../imports/api/vendors';
 import { vendorTypeCollection } from '../imports/api/vendorTypes';
 
 function insertEvent({ date, startTime, endTime, price }) {
-  eventsCollection.insert({date, startTime, endTime, price, createdAt: new Date()});
+  eventCollection.insert({date, startTime, endTime, price, createdAt: new Date()});
 }
 
 function insertClient({ firstName, lastName, email, phoneNum, street, city, state, zip }) {
   clientCollection.insert({firstName, lastName, email, phoneNum, street, city, state, zip, createdAt: new Date()});
 }
 
-//vendorType: ID of the vendorType for the vendor in the venderType collection
+//vendorType: ID of the vendorType for th evendor in the venderType collection
 //vendorName: name of the vendor
 function insertVendors({ vendorType, vendorName }) {
   vendorCollection.insert({ vendorType, vendorName, createdAt: new Date()});

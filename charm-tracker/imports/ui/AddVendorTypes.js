@@ -9,7 +9,6 @@ const AddVendorType = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         let newVendorType = event.target.vendorTypeName.value
-        console.log(newVendorType)
         if (newVendorType) {
             event.target.vendorTypeName.value = "";
             vendorTypeCollection.insert({

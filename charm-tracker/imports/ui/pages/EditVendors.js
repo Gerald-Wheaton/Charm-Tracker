@@ -3,6 +3,7 @@ import Header from "../Header"
 import VendorTypeList from "../VendorTypeList"
 import { vendorTypeCollection } from "../../api/vendorTypes"
 import AddVendorType from "../AddVendorTypes"
+import RemoveVendorType from "../RemoveVendorTypes"
 
 const EditVendors = () => {
 
@@ -15,12 +16,15 @@ const EditVendors = () => {
 
       {/* render the vendortype form for each vendor type */}
       {vendors.map((vendor) => {
-        console.log(vendor.name);
-        <VendorTypeList vendorTypeID={vendor._id} vendorTypeName={vendor.name} /> /* error appearing here*/
+        return(
+          <VendorTypeList key={vendor._id} vendorTypeID={vendor._id} vendorTypeName={vendor.name} /> 
+        )
       })}
 
       {/* Form for adding vendor types */}
       <AddVendorType />
+      {/* Form for removing vendor types */}
+      <RemoveVendorType />
     </div>
   )
 }
