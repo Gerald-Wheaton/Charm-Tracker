@@ -6,7 +6,7 @@ Charm Tracker keeps track of events, including the tasks needed to host an event
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
-4. [Team Credits/Contact Info](#Team Credits/Contact Info)
+4. [Team Credits/Contact Info](#team-credits/contact-info)
 5. [FAQs](#faqs)
 
 ## General Info
