@@ -21,7 +21,7 @@ Code info here (what packages we using, module list/description)
 ## Installation
 install info here (maybe irrelevant?)
 
-## Team Credits/Contact Info
+## Contact Info
 Team Members: Emily Port, Ryan Lumbert, Gerald Wheaton, Marley Jenkins, and Nick Casale
 Who to Contact: ???
 
