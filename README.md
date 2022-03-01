@@ -6,11 +6,14 @@ Charm Tracker keeps track of events, including the tasks needed to host an event
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
-4. [Collaboration](#collaboration)
+4. [Team Credits/Contact Info](#Team Credits/Contact Info)
 5. [FAQs](#faqs)
 
 ## General Info
-General information here pls
+Current Version: 0.28
+A stable internet connection is needed to access the Charm Tracker.
+Payment information stores calculations only, no actual electronic payment is taken/stored.
+
 
 ## Technologies
 Code info here (what packages we using, module list/description)
@@ -18,8 +21,9 @@ Code info here (what packages we using, module list/description)
 ## Installation
 install info here (maybe irrelevant?)
 
-## Collaboration
-Team members go here, maybe provide contact info.
+## Team Credits/Contact Info
+Team Members: Emily Port, Ryan Lumbert, Gerald Wheaton, Marley Jenkins, and Nick Casale
+Who to Contact: ???
 
 ## FAQs
 Any user questions can go here, maybe have team 3 run through our code?
