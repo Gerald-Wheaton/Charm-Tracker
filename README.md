@@ -10,9 +10,9 @@ Charm Tracker keeps track of events, including the tasks needed to host an event
 5. [FAQs](#faqs)
 
 ## General Info
-Current Version: 0.28
-A stable internet connection is needed to access the Charm Tracker.
-Payment information stores calculations only, no actual electronic payment is taken/stored.
+* Current Version: 0.28
+* A stable internet connection is needed to access the Charm Tracker.
+* Payment information stores calculations only, no actual electronic payment is taken/stored.
 
 
 ## Technologies
