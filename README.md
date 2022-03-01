@@ -10,13 +10,22 @@ Charm Tracker keeps track of events, including the tasks needed to host an event
 5. [FAQs](#faqs)
 
 ## General Info
-* Current Version: 0.28
+Current Version: 0.28
 * A stable internet connection is needed to access the Charm Tracker.
 * Payment information stores calculations only, no actual electronic payment is taken/stored.
 
 
 ## Technologies
 Code info here (what packages we using, module list/description)
+# Packages used:
+* @babel/runtime - version 7.15.4
+* meteor-node-stubs - version 1.1.0
+* prop-types - version 15.8.1
+* react - version 17.0.2
+* react-dom - version 17.0.2
+
+# Start Script
+* meteor run
 
 ## Installation
 install info here (maybe irrelevant?)
