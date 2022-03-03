@@ -17,7 +17,7 @@ Current Version: 0.28
 
 ## Technologies
 Code info here (what packages we using, module list/description)
-# Packages used:
+### Packages used:
 * [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) - version 7.15.4
 * [meteor-node-stubs](https://github.com/meteor/node-stubs) - version 1.1.0
 * [prop-types](https://www.npmjs.com/package/prop-types) - version 15.8.1
