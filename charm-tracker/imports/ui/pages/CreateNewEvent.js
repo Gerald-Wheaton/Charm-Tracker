@@ -56,6 +56,21 @@ const CreateNewEvent = () => {
         <button>Cancel</button>
         <button onClick={() => console.log(previousCustomer)}>Add Event</button>
       </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+            <fieldset>
+                <legend>Add Event</legend>
+                <select name="addEvent" id="addEvents">
+                    {events.map((event) => {
+                        return (
+                            <option key={event._id} value={event._id}>{event._id}</option>
+                        )
+                    })}
+                </select>
+                <button>Create Event</button>
+            </fieldset>
+        </form>
+      </div>
     </div>
   );
 };
