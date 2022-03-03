@@ -24,6 +24,16 @@ Code info here (what packages we using, module list/description)
 * [react](https://www.npmjs.com/package/react) - version 17.0.2
 * [react-dom](https://www.npmjs.com/package/react-dom) - version 17.0.2
 
+### Components:
+* Login Page - Handles user authentication and password retrieval.
+* Vendor Input - Handles adding and removing vendors, adding and removing vendor types, and uploading new additions or changes to the internal MongoDB.
+* Event Input - Handles creating a new event, including contact info of client and event details like location and price, and includes uploading to MongoDB.
+* Report Generation - Handles queries that search the MongoDB for data by searching a date range, name of event, or both. Report output is printed to the screen.
+* Edit Event - Handles editing existing events in the MongoDB. Event information is edited here, not contact info (PENDING).
+* Calendar - Handles viewing of events on a calendar, as well as showing upcoming tasks that need to be done for the day and tasks associated with the event selected from the calendar.
+* Activity Stream - Gives a greater view of upcoming tasks for users to complete, including past due, upcoming, and today's tasks.
+* Email Notifications - A component that interacts with the MongoDB to find event tasks that are scheduled a certain amount of days in advance and sends out email notifications to the user about them.
+
 # Start Script
 * meteor run
 
