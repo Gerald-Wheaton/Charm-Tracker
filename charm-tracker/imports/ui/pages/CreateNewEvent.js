@@ -15,7 +15,8 @@ Event details along with the name stored as {firstname, lastName} and email are 
 */
 
 const CreateNewEvent = () => {
-  const [previousCustomer, setPreviousCustomer] = useState();
+  const [customer, setCustomer] = useState();
+  // const [previousCustomer, setPreviousCustomer] = useState();
   // this will need some refactoring to pull the previous customers from the database and add them to selections
 
 
@@ -87,6 +88,9 @@ const CreateNewEvent = () => {
     }
   }
 
+  // get clients from db
+  let clients = clientCollection.find({}).fetch();
+
   return (
     <div>
       <Header title="Create New Event" />
@@ -97,13 +101,16 @@ const CreateNewEvent = () => {
         <select
           name="customer"
           id="returning-customer"
-          onChange={(event) => setPreviousCustomer(event.target.value)}
+          onChange={(event) => setCustomer(clientCollection.findOne({_id: event.target.value}).fetch())}
         >
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
+            {clients.map((client) => {
+              return (
+                <option key={client._id} value={client._id}>
+                  {client.firstName} {client.lastName}
+                </option>
+              );
+            })}
+          </select>
       </div>
 
       <div className="ContactDetails">
@@ -124,7 +131,7 @@ const CreateNewEvent = () => {
             <div>
               <label>
                 Last Name <br />
-                <input type="input" id="lname" name="lname"></input>
+                <input type="input" id="lname" name="lname" ></input>
               </label>
             </div>
             <div>
