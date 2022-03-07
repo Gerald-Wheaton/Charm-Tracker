@@ -1,18 +1,92 @@
 import React, { useState } from "react";
 import ContactDetailsForm from "../ContactDetailsForm";
 import EventDetailsForm from "../EventDetailsForm";
+import { Link } from "react-router-dom";
+import { eventCollection } from "../../api/events";
 import Header from "../Header";
+import { clientCollection } from "../../api/clients";
 
 /* 
-This component uses the ContactDetailsForm and the EventDetailsForm and wraps them in this component 
-that adds some extra functionality such as beign able to select a returning customer and submitting.
+This component gets all of the details necessary for creating an event.
 
-Both form components are wrapped in a form component. This is an area that will need to be inspected as it may disrupt the way react handles the forms.
+Contact datails are added to the client collection.
+
+Event details along with the name stored as {firstname, lastName} and email are stored in event collection.
 */
 
 const CreateNewEvent = () => {
   const [previousCustomer, setPreviousCustomer] = useState();
   // this will need some refactoring to pull the previous customers from the database and add them to selections
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    // values from contact details
+    let newfname = event.target.fname.value;
+    let newlname = event.target.lname.value;
+    let newEmail = event.target.email.value;
+    let newPhoneNum = event.target.PhoneNum.value;
+    let newAddress = event.target.address.value;
+    let newCity = event.target.city.value;
+    let newState = event.target.state.value;
+    let newZip = event.target.zip.value;
+
+    //values from event details
+    let newDate = event.target.date.value;
+    let newStartTime = event.target.startTime.value;
+    let newStopTime = event.target.stopTime.value;
+    let newPrice = event.target.price.value;
+
+    try {
+      if (newfname && newlname && newEmail && newPhoneNum && newAddress && newCity && newState && newZip && newDate && newStartTime && newStopTime && newPrice) {
+        // values from contact details
+        event.target.fname.value = "";
+        event.target.lname.value = "";
+        event.target.email.value = "";
+        event.target.PhoneNum.value = "";
+        event.target.address.value = "";
+        event.target.city.value = "";
+        event.target.state.value = "";
+        event.target.zip.value = "";
+
+        //values from event details
+        event.target.date.value = "";
+        event.target.startTime.value = "";
+        event.target.stopTime.value = "";
+        event.target.price.value = "";
+
+        clientCollection.insert({
+          createdAt: Date.now(),
+          firstName: newfname,
+          lastName: newlname,
+          email: newEmail,
+          phoneNumber: newPhoneNum,
+          address: newAddress,
+          city: newCity,
+          state: newState,
+          zip: newZip,
+        })
+
+        eventCollection.insert({
+          createdAt: Date.now(),
+          name: {firstName: newfname,
+                lastName: newlname},
+          email: newEmail,
+          date: newDate,
+          startTime: newStartTime,
+          stopTime: newStopTime,
+          price: newPrice,
+        });
+        console.log("Event created");
+      } else {
+        console.log("form not completed")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
       <Header title="Create New Event" />
@@ -33,7 +107,7 @@ const CreateNewEvent = () => {
       </div>
 
       <div className="ContactDetails">
-        <form>
+        <form onSubmit={handleSubmit}>
           <fieldset className="ContactDetails">
             <legend>Contact Details</legend>
             <div>
@@ -118,14 +192,14 @@ const CreateNewEvent = () => {
               </label>
             </div>
           </fieldset>
+          <div>
+            <Link to="/calendar" className="button">Cancel</Link>
+            <button>
+              Add Event
+            </button>
+          </div>
         </form>
 
-        <div>
-          <button>Cancel</button>
-          <button onClick={() => console.log(previousCustomer)}>
-            Add Event
-          </button>
-        </div>
       </div>
     </div>
   );
