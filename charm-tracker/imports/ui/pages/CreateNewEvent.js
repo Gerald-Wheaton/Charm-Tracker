@@ -15,9 +15,16 @@ Event details along with the name stored as {firstname, lastName} and email are 
 */
 
 const CreateNewEvent = () => {
-  const [customer, setCustomer] = useState();
+  const [customer, setCustomer] = useState({});
   // const [previousCustomer, setPreviousCustomer] = useState();
   // this will need some refactoring to pull the previous customers from the database and add them to selections
+
+  const getData = (event) => {
+    if (event.target.value != "") {
+      let client = clientCollection.find({ _id: event.target.value }).fetch()
+      setCustomer({firstName: client[0].firstName, lastName: client[0].lastName, email: client[0].email, phoneNum: client[0].phoneNumber, address: client[0].address, city: client[0].city, state: client[0].state, zip: client[0].zip })
+    }
+  }
 
 
   const handleSubmit = (event) => {
@@ -32,6 +39,8 @@ const CreateNewEvent = () => {
     let newCity = event.target.city.value;
     let newState = event.target.state.value;
     let newZip = event.target.zip.value;
+
+    // will need to check if the client is already in the system
 
     //values from event details
     let newDate = event.target.date.value;
@@ -101,8 +110,10 @@ const CreateNewEvent = () => {
         <select
           name="customer"
           id="returning-customer"
-          onChange={(event) => setCustomer(clientCollection.findOne({_id: event.target.value}).fetch())}
+          onChange={getData}
+          defaultValue=""
         >
+          <option value="" ></option>
             {clients.map((client) => {
               return (
                 <option key={client._id} value={client._id}>
@@ -110,7 +121,7 @@ const CreateNewEvent = () => {
                 </option>
               );
             })}
-          </select>
+        </select>
       </div>
 
       <div className="ContactDetails">
@@ -124,50 +135,50 @@ const CreateNewEvent = () => {
                   type="input"
                   id="fname"
                   name="fname"
-                  defaultValue={previousCustomer}
+                  defaultValue={customer.firstName}
                 ></input>
               </label>
             </div>
             <div>
               <label>
                 Last Name <br />
-                <input type="input" id="lname" name="lname" ></input>
+                <input type="input" id="lname" name="lname" defaultValue={customer.lastName}></input>
               </label>
             </div>
             <div>
               <label>
                 Email <br />
-                <input type="email" id="email" name="email"></input>
+                <input type="email" id="email" name="email" defaultValue={customer.email}></input>
               </label>
             </div>
             <div>
               <label>
                 Phone Number <br />
-                <input type="input" id="PhoneNum" name="PhoneNum"></input>
+                <input type="input" id="PhoneNum" name="PhoneNum" defaultValue={customer.phoneNum}></input>
               </label>
             </div>
             <div>
               <label>
                 Address <br />
-                <input type="input" id="address" name="address"></input>
+                <input type="input" id="address" name="address" defaultValue={customer.address}></input>
               </label>
             </div>
             <div>
               <label>
                 City <br />
-                <input type="input" id="city" name="city"></input>
+                <input type="input" id="city" name="city" defaultValue={customer.city}></input>
               </label>
             </div>
             <div>
               <label>
                 State <br />
-                <input type="input" id="state" name="state"></input>
+                <input type="input" id="state" name="state" defaultValue={customer.state}></input>
               </label>
             </div>
             <div>
               <label>
                 Zip <br />
-                <input type="input" id="zip" name="zip"></input>
+                <input type="input" id="zip" name="zip" defaultValue={customer.zip}></input>
               </label>
             </div>
           </fieldset>
