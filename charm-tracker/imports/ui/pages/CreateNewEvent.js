@@ -24,7 +24,8 @@ const CreateNewEvent = () => {
       let client = clientCollection.find({ _id: event.target.value }).fetch()
       console.log(client)
       setCustomer({id: client[0]._id,  firstName: client[0].firstName, lastName: client[0].lastName, email: client[0].email, phoneNum: client[0].phoneNumber, address: client[0].address, city: client[0].city, state: client[0].state, zip: client[0].zip })
-      console.log(customer._id)
+    } else {
+      setCustomer("")
     }
   }
 
@@ -94,7 +95,6 @@ const CreateNewEvent = () => {
         console.log("Event created");
       } else {
         console.log("form not completed")
-        console.log(eventCollection.find({}).fetch())
       }
     } catch (error) {
       console.log(error);
