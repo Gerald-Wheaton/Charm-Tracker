@@ -22,7 +22,9 @@ const CreateNewEvent = () => {
   const getData = (event) => {
     if (event.target.value != "") {
       let client = clientCollection.find({ _id: event.target.value }).fetch()
-      setCustomer({firstName: client[0].firstName, lastName: client[0].lastName, email: client[0].email, phoneNum: client[0].phoneNumber, address: client[0].address, city: client[0].city, state: client[0].state, zip: client[0].zip })
+      console.log(client)
+      setCustomer({id: client[0]._id,  firstName: client[0].firstName, lastName: client[0].lastName, email: client[0].email, phoneNum: client[0].phoneNumber, address: client[0].address, city: client[0].city, state: client[0].state, zip: client[0].zip })
+      console.log(customer._id)
     }
   }
 
@@ -39,8 +41,6 @@ const CreateNewEvent = () => {
     let newCity = event.target.city.value;
     let newState = event.target.state.value;
     let newZip = event.target.zip.value;
-
-    // will need to check if the client is already in the system
 
     //values from event details
     let newDate = event.target.date.value;
@@ -66,7 +66,10 @@ const CreateNewEvent = () => {
         event.target.stopTime.value = "";
         event.target.price.value = "";
 
-        clientCollection.insert({
+        // Will check if there is a client in the system with the same id
+        // if there is not a match, then it will add a new document to the db
+        // if there is a match, then the values will be updated this will allow the user to update clients
+        clientCollection.upsert({ _id: customer.id }, { $set: {
           createdAt: Date.now(),
           firstName: newfname,
           lastName: newlname,
@@ -76,7 +79,7 @@ const CreateNewEvent = () => {
           city: newCity,
           state: newState,
           zip: newZip,
-        })
+        }})
 
         eventCollection.insert({
           createdAt: Date.now(),
@@ -91,6 +94,7 @@ const CreateNewEvent = () => {
         console.log("Event created");
       } else {
         console.log("form not completed")
+        console.log(eventCollection.find({}).fetch())
       }
     } catch (error) {
       console.log(error);
