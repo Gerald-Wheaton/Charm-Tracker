@@ -7,6 +7,7 @@ import { eventCollection } from "../../api/events";
 const PaymentManagement = () => {
   const [client, setClient] = useState();
 
+  // for when the user selects an event
   const getData = (event) => {
     let element = <p>No event selected</p>
     if (event.target.value != "") {
@@ -41,6 +42,7 @@ const PaymentManagement = () => {
     }
   }
 
+  // for when the user submits a deposit
   const handleDeposit = (event) => {
     event.preventDefault()
 
@@ -53,12 +55,28 @@ const PaymentManagement = () => {
       deposit = parseFloat(deposit)
       if (!isNaN(deposit)) {
         let currentEvent = eventCollection.find({ _id: client }).fetch();
+
+        // clean price value
+        let price = currentEvent[0].price
+        if (price.charAt(0) == '$') {
+          price = price.substr(1);
+        }
+        price = parseFloat(price)
+
         if (currentEvent[0].amountPaid != undefined) {
           // has made a payment
-          eventCollection.update({ _id: client }, { $inc: { amountPaid: deposit } })
+          if (currentEvent[0].amountPaid + deposit > price){
+            ReactDom.render(<p>The amount paid cannot be larger than the price of the event</p>, document.getElementById('error'))
+          } else {
+            eventCollection.update({ _id: client }, { $inc: { amountPaid: deposit } })
+          }
         } else {
           // has not made a payment yet
-          eventCollection.update({_id: client}, {$set:{ amountPaid: deposit }})
+          if (deposit > price) {
+            ReactDom.render(<p>The amount paid cannot be larger than the price of the event</p>, document.getElementById('error'))
+          } else {
+            eventCollection.update({ _id: client }, { $set: { amountPaid: deposit } })
+          }
         }
         // update the amount paid in UI
         currentEvent = eventCollection.find({ _id: client }).fetch();
@@ -66,11 +84,6 @@ const PaymentManagement = () => {
         ReactDom.render(amountPaidElement, document.getElementById('paid'));
 
         // update the amount remaining in UI
-        let price = currentEvent[0].price
-        if (price.charAt(0) == '$') {
-          price = price.substr(1);
-        }
-        price = parseFloat(price)
         let remainingElement = <p>$ {price - currentEvent[0].amountPaid}</p>
         ReactDom.render(remainingElement, document.getElementById('remaining'));
       }
