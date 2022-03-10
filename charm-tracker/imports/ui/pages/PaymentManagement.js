@@ -25,10 +25,16 @@ const PaymentManagement = () => {
         // they have made a previous payment
         let amountPaidElement = <p>$ {clientevent[0].amountPaid}</p>
         ReactDom.render(amountPaidElement, document.getElementById('paid'));
+
+        let remainingElement = <p>$ {price - clientevent[0].amountPaid}</p>
+        ReactDom.render(remainingElement, document.getElementById('remaining'));
       } else {
         // no paymnets have been made
         let amountPaidElement = <p>$ 0.00</p>
         ReactDom.render(amountPaidElement, document.getElementById('paid'));
+
+        let remainingElement = <p>$ {price}</p>
+        ReactDom.render(remainingElement, document.getElementById('remaining'));
       }
     } else {
       ReactDom.render(element, document.getElementById('eventCost'));
@@ -48,13 +54,25 @@ const PaymentManagement = () => {
       if (!isNaN(deposit)) {
         let currentEvent = eventCollection.find({ _id: client }).fetch();
         if (currentEvent[0].amountPaid != undefined) {
+          // has made a payment
           eventCollection.update({ _id: client }, { $inc: { amountPaid: deposit } })
         } else {
+          // has not made a payment yet
           eventCollection.update({_id: client}, {$set:{ amountPaid: deposit }})
         }
+        // update the amount paid in UI
         currentEvent = eventCollection.find({ _id: client }).fetch();
         let amountPaidElement = <p>$ {currentEvent[0].amountPaid}</p>
         ReactDom.render(amountPaidElement, document.getElementById('paid'));
+
+        // update the amount remaining in UI
+        let price = currentEvent[0].price
+        if (price.charAt(0) == '$') {
+          price = price.substr(1);
+        }
+        price = parseFloat(price)
+        let remainingElement = <p>$ {price - currentEvent[0].amountPaid}</p>
+        ReactDom.render(remainingElement, document.getElementById('remaining'));
       }
       else {
         ReactDom.render(<p>Not a valid input</p>, document.getElementById('error'))
@@ -109,6 +127,16 @@ const PaymentManagement = () => {
             </td>
           </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                Cost Remaining:
+              </td>
+              <td id="remaining">
+                {/* the event cost minus the amount paid will be rendered here */}
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
