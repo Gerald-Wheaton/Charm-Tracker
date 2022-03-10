@@ -34,7 +34,7 @@ Code info here (what packages we using, module list/description)
 * Activity Stream - Gives a greater view of upcoming tasks for users to complete, including past due, upcoming, and today's tasks.
 * Email Notifications - A component that interacts with the MongoDB to find event tasks that are scheduled a certain amount of days in advance and sends out email notifications to the user about them.
 
-# Start Script
+## Start Script
 * meteor run
 
 ## Installation
