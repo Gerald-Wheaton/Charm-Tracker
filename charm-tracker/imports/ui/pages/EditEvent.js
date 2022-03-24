@@ -76,6 +76,7 @@ const EditEvent = (props) => {
 
                 // will update the event collection 
                 eventCollection.update({ _id: eventID}, {
+                    $set: {
                     updatedAt: Date.now(),
                     name: {
                         firstName: newfname,
@@ -86,7 +87,7 @@ const EditEvent = (props) => {
                     startTime: newStartTime,
                     stopTime: newStopTime,
                     price: newPrice,
-                });
+                }});
                 console.log("Event updated");
             } else {
                 console.log("form not completed")

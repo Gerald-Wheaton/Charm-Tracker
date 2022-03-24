@@ -16,6 +16,8 @@ const Reports = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    let eventsDebug = eventCollection.find({}).fetch()
+    console.log(eventsDebug)
     console.log(event.target.filter.value)
     if (event.target.filter.value == "date") {
       let startDate = event.target.startDate.value
@@ -27,8 +29,9 @@ const Reports = () => {
       ReactDom.render(eventReportEl, document.getElementById('eventReports'));
 
     } else if (event.target.filter.value == "email") {
-      report = eventCollection.find({email: event.target.clientEmail.value}).fetch()
       clientReport = clientCollection.find({ email: event.target.clientEmail.value }).fetch()
+      console.log("id", clientReport[0]._id)
+      report = eventCollection.find({clientID: clientReport[0]._id}).fetch()
 
       //render
       let clientReportEl = <ClientReport reports={clientReport} />
@@ -39,7 +42,7 @@ const Reports = () => {
     } else if (event.target.filter.value == "both") {
       clientReport = clientCollection.find({ email: event.target.clientEmail.value }).fetch()
       report = eventCollection.find({ $and: [
-        {email: event.target.clientEmail.value},
+        { clientID: clientReport[0]._id},
         { date: { $gt: startDate, $lt: stopDate }},
       ]}).fetch()
 
@@ -52,6 +55,7 @@ const Reports = () => {
     } else {
       console.log("error, no filter selected")
     }
+    console.log(report)
   }
 
   return (
@@ -84,7 +88,7 @@ const Reports = () => {
           <input type="date" name="stopDate"></input>
         </label>
 
-        <label className="nameFilter">Name
+        <label className="nameFilter">Email
           <input type="text" name="clientEmail"></input>
         </label>
 
