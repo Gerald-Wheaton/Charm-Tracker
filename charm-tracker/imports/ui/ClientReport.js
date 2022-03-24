@@ -1,7 +1,7 @@
 import React from "react";
 
 /* 
-The header component is called on all internal pages and it is passed a title prop that it renders along with the logo.
+This is what will be printed when a client has been searched in the reports
 */
 
 const ClientReport = (props) => {

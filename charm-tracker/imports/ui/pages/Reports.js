@@ -21,7 +21,8 @@ const Reports = () => {
       let startDate = event.target.startDate.value
       let stopDate = event.target.stopDate.value
       report = eventCollection.find({ date: { $gt: startDate, $lt: stopDate}}).fetch()
-
+      
+      //render
       let eventReportEl = <EventReports reports={report} />
       ReactDom.render(eventReportEl, document.getElementById('eventReports'));
 
@@ -29,6 +30,7 @@ const Reports = () => {
       report = eventCollection.find({email: event.target.clientEmail.value}).fetch()
       clientReport = clientCollection.find({ email: event.target.clientEmail.value }).fetch()
 
+      //render
       let clientReportEl = <ClientReport reports={clientReport} />
       let eventReportEl = <EventReports reports={report} />
       ReactDom.render(clientReportEl, document.getElementById('reports'));
@@ -41,6 +43,7 @@ const Reports = () => {
         { date: { $gt: startDate, $lt: stopDate }},
       ]}).fetch()
 
+      //render
       let clientReportEl = <ClientReport reports={clientReport} />
       let eventReportEl = <EventReports reports={report} />
       ReactDom.render(clientReportEl, document.getElementById('reports'));
@@ -49,8 +52,6 @@ const Reports = () => {
     } else {
       console.log("error, no filter selected")
     }
-    console.log(clientReport)
-    console.log(report)
   }
 
   return (

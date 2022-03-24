@@ -3,6 +3,11 @@ import Header from "../Header"
 import { eventCollection } from "../../api/events";
 import { clientCollection } from "../../api/clients";
 
+/*
+Only accessable from the calendar page when an event is selected. The client details will be 
+accessed by whatever email is stored in the event doc.
+*/
+
 
 const EditEvent = (props) => {
     const { eventID } = props
