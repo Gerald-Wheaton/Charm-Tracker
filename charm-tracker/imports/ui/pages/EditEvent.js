@@ -1,5 +1,8 @@
 import React from "react"
 import Header from "../Header"
+import { eventCollection } from "../../api/events";
+import { clientCollection } from "../../api/clients";
+
 
 const EditEvent = (props) => {
     const { eventID } = props
