@@ -18,6 +18,7 @@ const EventReports = (props) => {
                             <li>Start Time: {event.startTime}</li>
                             <li>Stop Time: {event.stopTime}</li>
                             <li>Price: {event.price}</li>
+                            <li>Amount Paid: ${event.amountPaid}</li>
                         </ul>
                     );
                 })
