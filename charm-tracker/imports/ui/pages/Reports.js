@@ -4,6 +4,7 @@ import { eventCollection } from "../../api/events";
 import { clientCollection } from "../../api/clients";
 import ClientReport from "../ClientReport";
 import EventReports from "../EventReports";
+import ReactDom from "react-dom";
 
 const Reports = () => {
 
@@ -20,21 +21,36 @@ const Reports = () => {
       let startDate = event.target.startDate.value
       let stopDate = event.target.stopDate.value
       report = eventCollection.find({ date: { $gt: startDate, $lt: stopDate}}).fetch()
+
+      let eventReportEl = <EventReports reports={report} />
+      ReactDom.render(eventReportEl, document.getElementById('eventReports'));
+
     } else if (event.target.filter.value == "email") {
       report = eventCollection.find({email: event.target.clientEmail.value}).fetch()
       clientReport = clientCollection.find({ email: event.target.clientEmail.value }).fetch()
+
+      let clientReportEl = <ClientReport reports={clientReport} />
+      let eventReportEl = <EventReports reports={report} />
+      ReactDom.render(clientReportEl, document.getElementById('reports'));
+      ReactDom.render(eventReportEl, document.getElementById('eventReports'));
+
     } else if (event.target.filter.value == "both") {
       clientReport = clientCollection.find({ email: event.target.clientEmail.value }).fetch()
       report = eventCollection.find({ $and: [
         {email: event.target.clientEmail.value},
         { date: { $gt: startDate, $lt: stopDate }},
       ]}).fetch()
+
+      let clientReportEl = <ClientReport reports={clientReport} />
+      let eventReportEl = <EventReports reports={report} />
+      ReactDom.render(clientReportEl, document.getElementById('reports'));
+      ReactDom.render(eventReportEl, document.getElementById('eventReports'));
+
     } else {
       console.log("error, no filter selected")
     }
     console.log(clientReport)
     console.log(report)
-
   }
 
   return (
@@ -75,23 +91,10 @@ const Reports = () => {
       </form>
 
       {/* reports rendered here */}
-      {clientReport.length > 0 
-      ? <ClientReport report={clientReport} />
-      : null }
-      {
-        report.map((event) => {
-          return (
-            <ul key={event._id}>
-              <li>Name: {event.name.firstName} {event.name.lastName}</li>
-              <li>Email: {event.email}</li>
-              <li>Date: {event.date}</li>
-              <li>Start Time: {event.startTime}</li>
-              <li>Stop Time: {event.stopTime}</li>
-              <li>Price: {event.price}</li>
-            </ul>
-          );
-        })
-      }
+
+      <div id="reports"></div>
+      <div id="eventReports"></div>
+
       
     </div>
   )
