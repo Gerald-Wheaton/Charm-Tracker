@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import ContactDetailsForm from "../ContactDetailsForm";
-import EventDetailsForm from "../EventDetailsForm";
 import { Link } from "react-router-dom";
 import { eventCollection } from "../../api/events";
 import Header from "../Header";
