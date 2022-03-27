@@ -2,6 +2,8 @@
 ****************
 Charm Tracker keeps track of events, including the tasks needed to host an event, timing and payment for an event, and vendors needed to run the event. Users are updated on deadlines through email and an in app notification. Reports can be run about specific events.
 
+Up to date as of: 3/27/22
+
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
