@@ -5,12 +5,15 @@ import Header from "../Header"
 import { clientCollection } from "../../api/clients"
 import { vendorTypeCollection } from "../../api/vendorTypes"
 import {
-  stripPrice,
+  validatePrice,
   validateZip,
   validatePhone,
   validateEmail,
+  validateTimeSpan,
   validateState,
 } from "./validation/eventValidation"
+
+import { ToastContainer, toast } from "react-toastify"
 
 /* 
 This component gets all of the details necessary for creating an event.
@@ -22,9 +25,22 @@ Event details along with the name stored as {firstname, lastName} and email are 
 
 const CreateNewEvent = () => {
   const [customer, setCustomer] = useState({})
+  //const [message, setMessage] = useState()
+
   // const [previousCustomer, setPreviousCustomer] = useState();
   // this will need some refactoring to pull the previous customers from the database and add them to selections
 
+  // const tellEmWutsUp = () => {
+  //   toast.warn(message, {
+  //     position: "top-right",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   })
+  // }
   const getData = event => {
     if (event.target.value != "") {
       let client = clientCollection.find({ _id: event.target.value }).fetch()
@@ -66,10 +82,10 @@ const CreateNewEvent = () => {
     //values from event details
     let newDate = data.date.value
     let newStartTime = data.startTime.value
-    let newStopTime = data.stopTime.value
+    let newStopTime = validateTimeSpan(data, newStartTime)
 
     // remove "$" or "," from price if contains
-    let newPrice = stripPrice(data)
+    let newPrice = validatePrice(data)
 
     try {
       if (
@@ -80,11 +96,11 @@ const CreateNewEvent = () => {
         newAddress &&
         newCity &&
         newState &&
-        newZip /* &&
+        newZip &&
         newDate &&
         newStartTime &&
         newStopTime &&
-        newPrice*/
+        newPrice
       ) {
         // values from contact details
         data.fname.value = ""
@@ -176,6 +192,17 @@ const CreateNewEvent = () => {
   return (
     <div>
       <Header title="Create New Event" />
+      <ToastContainer
+        position="top-right"
+        autoClose={15000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       {/* section to select previous customers to autofill the contact details */}
       <div>
@@ -322,7 +349,7 @@ const CreateNewEvent = () => {
             <Link to="/calendar" className="button">
               Cancel
             </Link>
-            <button>Add Event</button>
+            <button /*onClick={() => tellEmWutsUp()}*/>Add Event</button>
           </div>
         </form>
       </div>

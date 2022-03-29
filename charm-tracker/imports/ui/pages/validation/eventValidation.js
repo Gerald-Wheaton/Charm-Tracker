@@ -1,5 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import validator from "validator"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
+// const tellUserTheyDumb = () => {
+//   const options = {
+//     autoClose: 3000,
+//     className: "",
+//     position: toast.POSITION.TOP_RIGHT,
+//   }
+//   toast.warn("Enter valid input you THOT", options)
+// }
 
 const stripPrice = data => {
   let price = data.price.value
@@ -9,9 +20,15 @@ const stripPrice = data => {
       ? price.replaceAll("$", "").replaceAll(",", "")
       : price
 
-  strippedPrice = isNaN(price) ? "" : strippedPrice
-
   return strippedPrice
+}
+
+const validatePrice = data => {
+  let price = stripPrice(data)
+  if (isNaN(data.price.value)) {
+    return ""
+  }
+  return price
 }
 
 const validateZip = data => {
@@ -28,6 +45,7 @@ const validateZip = data => {
 
 const validatePhone = data => {
   if (!validator.isMobilePhone(data.PhoneNum.value)) {
+    console.log("Invalid phone number format")
     return ""
   }
   return data.PhoneNum.value
@@ -35,9 +53,22 @@ const validatePhone = data => {
 
 const validateEmail = data => {
   if (!validator.isEmail(data.email.value)) {
+    console.log("Enter a valid email address")
     return ""
   }
   return data.email.value
+}
+
+const validateTimeSpan = (data, startTime) => {
+  let validTimeSpan =
+    data.stopTime.value.replaceAll(":", "") > startTime.replaceAll(":", "")
+      ? true
+      : false
+  if (!validTimeSpan) {
+    console.log("The END time must not be earlier than the START time")
+    return ""
+  }
+  return data.stopTime.value
 }
 
 const validateState = data => {
@@ -104,9 +135,17 @@ const validateState = data => {
   ]
 
   if (!states.includes(data.state.value)) {
+    console.log("Enter a valid state abbreviation")
     return ""
   }
   return data.state.value
 }
 
-export { stripPrice, validateZip, validatePhone, validateEmail, validateState }
+export {
+  validatePrice,
+  validateZip,
+  validatePhone,
+  validateEmail,
+  validateTimeSpan,
+  validateState,
+}
