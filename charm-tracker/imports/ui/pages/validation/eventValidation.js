@@ -3,14 +3,14 @@ import validator from "validator"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-// const tellUserTheyDumb = () => {
-//   const options = {
-//     autoClose: 3000,
-//     className: "",
-//     position: toast.POSITION.TOP_RIGHT,
-//   }
-//   toast.warn("Enter valid input you THOT", options)
-// }
+const invalidField = value => {
+  const options = {
+    autoClose: 5000,
+    className: "",
+    position: toast.POSITION.TOP_RIGHT,
+  }
+  toast.error(`Enter valid ${value}`, options)
+}
 
 const stripPrice = data => {
   let price = data.price.value
@@ -26,6 +26,7 @@ const stripPrice = data => {
 const validatePrice = data => {
   let price = stripPrice(data)
   if (isNaN(data.price.value)) {
+    invalidField("PRICE")
     return ""
   }
   return price
@@ -37,6 +38,7 @@ const validateZip = data => {
   let nineDigZip = new RegExp("^[0-9]{5}[-][0-9]{5}$")
 
   if (!fiveDigZip.test(data.zip.value) && !nineDigZip.test(data.zip.value)) {
+    invalidField("ZIP CODE")
     return ""
   }
 
@@ -45,7 +47,7 @@ const validateZip = data => {
 
 const validatePhone = data => {
   if (!validator.isMobilePhone(data.PhoneNum.value)) {
-    console.log("Invalid phone number format")
+    invalidField("PHONE NUMBER")
     return ""
   }
   return data.PhoneNum.value
@@ -53,10 +55,21 @@ const validatePhone = data => {
 
 const validateEmail = data => {
   if (!validator.isEmail(data.email.value)) {
-    console.log("Enter a valid email address")
+    invalidField("EMAIL")
     return ""
   }
   return data.email.value
+}
+
+const validateYear = data => {
+  let currYear = new Date().getFullYear()
+  let selectedYear = data.date.value.substring(0, 4)
+
+  if (selectedYear < currYear) {
+    invalidField("YEAR")
+    return ""
+  }
+  return data.date.value
 }
 
 const validateTimeSpan = (data, startTime) => {
@@ -65,7 +78,7 @@ const validateTimeSpan = (data, startTime) => {
       ? true
       : false
   if (!validTimeSpan) {
-    console.log("The END time must not be earlier than the START time")
+    invalidField("END DATE")
     return ""
   }
   return data.stopTime.value
@@ -135,7 +148,7 @@ const validateState = data => {
   ]
 
   if (!states.includes(data.state.value)) {
-    console.log("Enter a valid state abbreviation")
+    invalidField("STATE")
     return ""
   }
   return data.state.value
@@ -146,6 +159,7 @@ export {
   validateZip,
   validatePhone,
   validateEmail,
+  validateYear,
   validateTimeSpan,
   validateState,
 }

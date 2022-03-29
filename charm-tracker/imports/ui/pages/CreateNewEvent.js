@@ -9,6 +9,7 @@ import {
   validateZip,
   validatePhone,
   validateEmail,
+  validateYear,
   validateTimeSpan,
   validateState,
 } from "./validation/eventValidation"
@@ -75,32 +76,28 @@ const CreateNewEvent = () => {
     let newAddress = data.address.value
     let newCity = data.city.value
     let newState = validateState(data)
-
-    // soft zip validation. Make sure it is 5 cahracters long
     let newZip = validateZip(data)
 
     //values from event details
-    let newDate = data.date.value
+    let newDate = validateYear(data)
     let newStartTime = data.startTime.value
     let newStopTime = validateTimeSpan(data, newStartTime)
-
-    // remove "$" or "," from price if contains
     let newPrice = validatePrice(data)
 
     try {
       if (
-        newfname &&
-        newlname &&
-        newEmail &&
-        newPhoneNum &&
-        newAddress &&
-        newCity &&
-        newState &&
-        newZip &&
-        newDate &&
-        newStartTime &&
-        newStopTime &&
-        newPrice
+        // newfname &&
+        // newlname &&
+        // newEmail &&
+        // newPhoneNum &&
+        // newAddress &&
+        // newCity &&
+        // newState &&
+        // newZip &&
+        newDate //&&
+        // newStartTime &&
+        // newStopTime &&
+        // newPrice
       ) {
         // values from contact details
         data.fname.value = ""
