@@ -26,22 +26,23 @@ Event details along with the name stored as {firstname, lastName} and email are 
 
 const CreateNewEvent = () => {
   const [customer, setCustomer] = useState({})
-  //const [message, setMessage] = useState()
+  const [message, setMessage] = useState("Event Created!")
+  const [success, setSuccess] = useState(false)
 
   // const [previousCustomer, setPreviousCustomer] = useState();
   // this will need some refactoring to pull the previous customers from the database and add them to selections
 
-  // const tellEmWutsUp = () => {
-  //   toast.warn(message, {
-  //     position: "top-right",
-  //     autoClose: 5000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   })
-  // }
+  const tellEmWutsUp = () => {
+    toast.warn(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+  }
   const getData = event => {
     if (event.target.value != "") {
       let client = clientCollection.find({ _id: event.target.value }).fetch()
@@ -175,11 +176,19 @@ const CreateNewEvent = () => {
             { $set: { [vendorType.name]: null } }
           )
         })
+        setSuccess(true)
       } else {
+        setSuccess(false)
         console.log("form not completed")
       }
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  const handleCreate = () => {
+    if (success) {
+      return tellEmWutsUp()
     }
   }
 
@@ -346,7 +355,7 @@ const CreateNewEvent = () => {
             <Link to="/calendar" className="button">
               Cancel
             </Link>
-            <button /*onClick={() => tellEmWutsUp()}*/>Add Event</button>
+            <button onClick={handleCreate()}>Add Event</button>
           </div>
         </form>
       </div>

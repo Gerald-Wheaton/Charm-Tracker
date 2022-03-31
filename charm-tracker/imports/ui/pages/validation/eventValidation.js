@@ -19,13 +19,12 @@ const stripPrice = data => {
     price.includes("$") || price.includes(",")
       ? price.replaceAll("$", "").replaceAll(",", "")
       : price
-
   return strippedPrice
 }
 
 const validatePrice = data => {
   let price = stripPrice(data)
-  if (isNaN(data.price.value)) {
+  if (isNaN(price)) {
     invalidField("PRICE")
     return ""
   }
@@ -78,7 +77,7 @@ const validateTimeSpan = (data, startTime) => {
       ? true
       : false
   if (!validTimeSpan) {
-    invalidField("END DATE")
+    invalidField("STOP TIME")
     return ""
   }
   return data.stopTime.value
