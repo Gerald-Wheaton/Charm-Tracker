@@ -98,7 +98,7 @@ const PaymentManagement = () => {
 
   return (
     <div>
-      <Header title="Payment Management" />
+      <Header id="title" title="Payment Management" />
       <select
         name="customer"
         id="customer"
@@ -114,17 +114,17 @@ const PaymentManagement = () => {
           );
         })}
       </select>
-      <p>New deposit:</p>
+      <p class="deposit">New Deposit:</p>
       <div id="error"></div>
       <form onSubmit={handleDeposit}>
-        <input type="text" name="depositAmount" />
-        <button>Submit</button>
+        <input type="text" id="insertAmount" name="depositAmount" />
+        <button class= "submit">Submit</button>
       </form>
       <div>
         <table>
           <tbody>
           <tr>
-            <td>
+            <td id="costTitle">
               Event Cost:
             </td>
             <td id="eventCost">
@@ -132,7 +132,7 @@ const PaymentManagement = () => {
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="amountTitle">
               Amount Paid:
             </td>
             <td id="paid">
@@ -142,7 +142,7 @@ const PaymentManagement = () => {
           </tbody>
           <tfoot>
             <tr>
-              <td>
+              <td id="remainTitle">
                 Cost Remaining:
               </td>
               <td id="remaining">

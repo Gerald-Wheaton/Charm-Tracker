@@ -1,0 +1,171 @@
+
+.select{
+    display:flex;
+}
+#customer{
+    display:flex;
+    width: 20%;
+    height:50px;
+    margin-top: 65px;
+background: #E5E5E5;
+border-radius: 15px;
+}
+
+
+p{
+    font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+}
+form{
+    display:flex;
+    width:100%;
+    margin-top: 30px;
+}
+.deposit{
+    display:flex;
+    width:100%;
+    margin-top: 20px;
+}
+.submit{
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    width: 210px;
+    height: 45px;
+    left: 385px;
+    top: 410px;
+    color: #000000;
+
+    background: #B8D9C6;
+    border-radius: 15px;
+
+}
+#insertAmount{
+    width: 210px;
+    height: 45px;
+    left: 155px;
+    top: 410px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000000;
+    background: #E5E5E5;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+#costTitle{
+    width: 125px;
+    height: 33px;
+    left: 156px;
+    top: 590px;
+    
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+}
+#eventCost{
+    width: 95px;
+height: 30px;
+left: 386px;
+top: 593px;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+display: flex;
+align-items: center;
+text-align: right;
+
+color: #000000;
+}
+
+.amountTitle{
+    width: 151px;
+    height: 33px;
+    left: 156px;
+    top: 664px;
+    
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+
+}
+#paid{
+    width: 95px;
+    height: 30px;
+    left: 385px;
+    top: 660px;
+    
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    
+    color: #000000; 
+}
+
+#remainTitle{
+    width: 181px;
+    height: 33px;
+    left: 155px;
+    top: 754px;
+    
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+}
+#remaining{
+    width: 95px;
+height: 30px;
+left: 385px;
+top: 757px;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+display: flex;
+align-items: center;
+text-align: right;
+
+color: #000000;
+
+}
