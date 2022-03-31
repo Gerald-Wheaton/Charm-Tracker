@@ -86,18 +86,18 @@ const CreateNewEvent = () => {
 
     try {
       if (
-        // newfname &&
-        // newlname &&
-        // newEmail &&
-        // newPhoneNum &&
-        // newAddress &&
-        // newCity &&
-        // newState &&
-        // newZip &&
-        newDate //&&
-        // newStartTime &&
-        // newStopTime &&
-        // newPrice
+        newfname &&
+        newlname &&
+        newEmail &&
+        newPhoneNum &&
+        newAddress &&
+        newCity &&
+        newState &&
+        newZip &&
+        newDate &&
+        newStartTime &&
+        newStopTime &&
+        newPrice
       ) {
         // values from contact details
         data.fname.value = ""
