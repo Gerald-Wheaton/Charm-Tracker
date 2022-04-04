@@ -24,8 +24,8 @@ function GenerateTasksFromEvent(eventID) {
 function CreateTasksForVendors(event) {
     // converts the date into milliseconds
     let dueDate = Date.parse(event.date);
-    // adds 30 days
-    dueDate = dueDate + 2592000000; // 2592000000 is 30 days in milliseconds
+    // subtracts 30 days
+    dueDate = dueDate - 2592000000; // 2592000000 is 30 days in milliseconds
     // creates new date object
     dueDate = new Date(dueDate);
     // converts to string
@@ -56,8 +56,8 @@ function CreateTasksForVendors(event) {
 function PaymentReminder(event) {
     // converts the date into milliseconds
     let dueDate = Date.parse(event.date);
-    // adds 30 days
-    dueDate = dueDate + 5184000000; // 5184000000 is 60 days in milliseconds
+    // subtracts 30 days
+    dueDate = dueDate - 5184000000; // 5184000000 is 60 days in milliseconds
     // creates new date object
     dueDate = new Date(dueDate);
     // converts to string
@@ -66,6 +66,14 @@ function PaymentReminder(event) {
     dueDate = dueDate.split(",");
     // gets the first string in the array
     dueDate = dueDate[0];
+
+    // add event to collection
+    taskCollection.insert({
+        eventID: event._id,
+        task: `Payment due for ${event.name.firstName} ${event.name.lastName}`,
+        dueDate: dueDate,
+        completed: false,
+    })
 
 }
 
@@ -73,8 +81,8 @@ function PaymentReminder(event) {
 function FloorPlanReminder(event) {
     // converts the date into milliseconds
     let dueDate = Date.parse(event.date);
-    // adds 30 days
-    dueDate = dueDate + 2592000000; // 2592000000 is 30 days in milliseconds
+    // subtracts 30 days
+    dueDate = dueDate - 2592000000; // 2592000000 is 30 days in milliseconds
     // creates new date object
     dueDate = new Date(dueDate);
     // converts to string
@@ -83,6 +91,13 @@ function FloorPlanReminder(event) {
     dueDate = dueDate.split(",");
     // gets the first string in the array
     dueDate = dueDate[0];
+
+    taskCollection.insert({
+        eventID: event._id,
+        task: `Review floor plan with ${event.name.firstName} ${event.name.lastName}`,
+        dueDate: dueDate,
+        completed: false,
+    })
 
 }
 
@@ -96,8 +111,8 @@ function MidMonthReminder() {
 function InsuranceReminder(event) {
     // converts the date into milliseconds
     let dueDate = Date.parse(event.date);
-    // adds 30 days
-    dueDate = dueDate + 2592000000; // 2592000000 is 30 days in milliseconds
+    // subtracts 30 days
+    dueDate = dueDate - 2592000000; // 2592000000 is 30 days in milliseconds
     // creates new date object
     dueDate = new Date(dueDate);
     // converts to string
@@ -106,11 +121,36 @@ function InsuranceReminder(event) {
     dueDate = dueDate.split(",");
     // gets the first string in the array
     dueDate = dueDate[0];
+
+    taskCollection.insert({
+        eventID: event._id,
+        task: `Insurance due for ${event.name.firstName} ${event.name.lastName}`,
+        dueDate: dueDate,
+        completed: false,
+    })
 }
 
 
 // handles the reminders for finalizing the event 14 days before the event
 function FinalizeEventReminder(event) {
-    
+    // converts the date into milliseconds
+    let dueDate = Date.parse(event.date);
+    // subtracts 14 days
+    dueDate = dueDate - 1209600000; // 1209600000 is 14 days in milliseconds
+    // creates new date object
+    dueDate = new Date(dueDate);
+    // converts to string
+    dueDate = dueDate.toLocaleString();
+    // splits date and time into an array
+    dueDate = dueDate.split(",");
+    // gets the first string in the array
+    dueDate = dueDate[0];
+
+    taskCollection.insert({
+        eventID: event._id,
+        task: `Finalize event for ${event.name.firstName} ${event.name.lastName}`,
+        dueDate: dueDate,
+        completed: false,
+    })
 }
 
