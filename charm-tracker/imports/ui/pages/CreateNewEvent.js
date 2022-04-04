@@ -135,7 +135,7 @@ const CreateNewEvent = () => {
   let clients = clientCollection.find({}).fetch();
 
   return (
-    <div>
+    <div class="createEvent">
       <Header title="Create New Event" />
 
       {/* section to select previous customers to autofill the contact details */}
@@ -245,10 +245,11 @@ const CreateNewEvent = () => {
             </div>
           </fieldset>
           <div>
-            <Link to="/calendar" className="button">Cancel</Link>
             <button>
               Add Event
             </button>
+                        <Link to="/calendar" className="button">Cancel</Link>
+
           </div>
         </form>
 

@@ -1,171 +1,98 @@
 
-.select{
-    display:flex;
+
+*{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-size: 1rem;
+
+}
+
+.payment{
+    width:100%;
+    font-size:1em;
+    box-sizing: border-box;
 }
 #customer{
-    display:flex;
-    width: 20%;
-    height:50px;
-    margin-top: 65px;
-background: #E5E5E5;
-border-radius: 15px;
-}
-
-
-p{
-    font-family: 'Open Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-}
-form{
-    display:flex;
-    width:100%;
-    margin-top: 30px;
-}
-.deposit{
-    display:flex;
-    width:100%;
-    margin-top: 20px;
-}
-.submit{
-
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    width: 210px;
-    height: 45px;
-    left: 385px;
-    top: 410px;
-    color: #000000;
-
-    background: #B8D9C6;
+    border: 1px solid #E5E5E5;
+    background-color: #E5E5E5;
     border-radius: 15px;
-
-}
-#insertAmount{
-    width: 210px;
-    height: 45px;
-    left: 155px;
-    top: 410px;
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    color: #000000;
-    background: #E5E5E5;
-    border: 1px solid #C4C4C4;
-    box-sizing: border-box;
-    border-radius: 15px;
+    padding: 12px;
 }
 
-#costTitle{
-    width: 125px;
-    height: 33px;
-    left: 156px;
-    top: 590px;
-    
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 33px;
-    /* identical to box height */
-    
-    display: flex;
-    align-items: center;
-    
-    color: #000000;
-}
-#eventCost{
-    width: 95px;
-height: 30px;
-left: 386px;
-top: 593px;
 
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 33px;
-display: flex;
-align-items: center;
-text-align: right;
 
-color: #000000;
-}
 
-.amountTitle{
-    width: 151px;
-    height: 33px;
-    left: 156px;
-    top: 664px;
-    
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 33px;
-    /* identical to box height */
-    
-    display: flex;
-    align-items: center;
-    
-    color: #000000;
+#customer{
+
+    margin-top:1rem;
+    margin-left: 3rem; 
+    width: 20%;  
+
+
 
 }
-#paid{
-    width: 95px;
-    height: 30px;
-    left: 385px;
-    top: 660px;
+ 
+
+@media only screen and (max-width: 768px) {
+    .payment{
+        width:100%;
+        font-size:1em;
+        box-sizing: border-box;
+    }
+    .svg{
+        margin-top:1em;
+        width:100%;
+    }
+
+    #customer{
+        margin-top:1rem;
+        margin-left: 3rem; 
+        width:70%;
+
+    }
     
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 33px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    
-    color: #000000; 
+    .deposit{
+        margin-top:1rem;
+        margin-left: 3rem; 
+
+    }
+    .select{
+        display:flex;
+        width:50%;
+        
+    }
+    #insertAmount{
+        border: 1px solid #E5E5E5;
+        background-color:#E5E5E5;
+        width:50%;
+        border: 1px solid #C4C4C4;
+        box-sizing: border-box;
+        border-radius: 15px;
+        padding: 12px;
+        margin-top:2rem;
+
+    }
+    .submitpayment{
+         background: #B8D9C6;
+         border-radius: 15px;
+         font-size: 1rem;
+         width:30%;
+         padding: 12px;
+
+         color: #000000;
+    }
+
+    .amountSubmit{
+        width:100%;
+        margin-left:2.5rem;
+    }
+    table{ 
+        margin-top:2.5rem;
+
+        margin-left:3rem;
+        color: #000000;
+    }
+
+  
 }
 
-#remainTitle{
-    width: 181px;
-    height: 33px;
-    left: 155px;
-    top: 754px;
-    
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 33px;
-    /* identical to box height */
-    
-    display: flex;
-    align-items: center;
-    
-    color: #000000;
-}
-#remaining{
-    width: 95px;
-height: 30px;
-left: 385px;
-top: 757px;
-
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 33px;
-display: flex;
-align-items: center;
-text-align: right;
-
-color: #000000;
-
-}

@@ -34,12 +34,12 @@ const AddVendorType = () => {
 
 
     return (
-        <div>
+        <div class="editVendors">
             <form onSubmit={handleSubmit}>
                 <fieldset>
                     <legend>Add Vendor Type</legend>
                     <input type="text" id="vendorName" name="vendorTypeName"></input>
-                    <button id="vendor">Add Vendor Type</button>
+                    <button >Add Vendor Type</button>
                 </fieldset>
             </form>
         </div>
