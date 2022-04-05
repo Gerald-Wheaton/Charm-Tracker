@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 // import { UP_Collection_Access } from './../api/user_posts.js';
-import Login from "./pages/Login.js"
+import Login from "./pages/LoginPages/Login.js"
 import ResetPassword from "./pages/ResetPassword.js"
 import PageRoutes from "./PageRoutes.js"
 
