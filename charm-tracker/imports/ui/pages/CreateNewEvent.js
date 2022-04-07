@@ -4,6 +4,7 @@ import { eventCollection } from "../../api/events"
 import Header from "../Header"
 import { clientCollection } from "../../api/clients"
 import { vendorTypeCollection } from "../../api/vendorTypes"
+import GenerateTasksFromEvent from "../../api/taskHandling/TaskHandler.js"
 
 /* 
 This component gets all of the details necessary for creating an event.
@@ -142,6 +143,10 @@ const CreateNewEvent = () => {
           })
           console.log("Event created")
         }
+
+        //TODO: call the tasks fucntion here????
+        console.log(eventID)
+        GenerateTasksFromEvent(eventID)
 
         // adding in the vendors
         let vendorTypes = vendorTypeCollection.find({}).fetch()

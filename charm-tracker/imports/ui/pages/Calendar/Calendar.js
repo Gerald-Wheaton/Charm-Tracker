@@ -17,10 +17,6 @@ const Calendar = () => {
       : []
   )
 
-  //const generation = GenerateTasksFromEvent()
-  const task = taskCollection.find({}).fetch()
-  console.log(task)
-
   const eventForDate = date => events.find(e => e.date === date)
 
   useEffect(() => {

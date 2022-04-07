@@ -7,30 +7,6 @@ import remind from "./remindMethods"
 /* This serves as a analysis layer that will parse the events and generate the tasks. The task collection can then be read to 
 notify the user about upcoming and unfinished tasks. */
 
-// overarching function where event ID is passed in to parse the event data and generate tasks by calling sub-functions
-const GenerateTasksFromEvent = evenIDt => {
-  let event = eventCollection.find({}).fetch()
-
-  const haveData =
-    event.length != 0 /*&& typeof event != undefined*/ ? true : false
-
-  if (haveData) {
-    //CreateTasksForVendors(event)
-
-    for (let i = 0; i < event.length; i++) {
-      let evt = event[i]
-
-      // PaymentReminder(evt)
-      // FloorPlanReminder(evt)
-      // MidMonthReminder()
-      // InsuranceReminder(evt)
-      // FinalizeEventReminder(evt)
-    }
-  } else {
-    console.log("no data loaded")
-  }
-}
-
 /* Potentially a better way to do this but this is what we are going with for now */
 // adds a task to the task collection for every vendor type currently in the system
 function CreateTasksForVendors(event) {
@@ -112,6 +88,30 @@ const FinalizeEventReminder = event => {
     completed: false,
   })
   return
+}
+
+// overarching function where event ID is passed in to parse the event data and generate tasks by calling sub-functions
+const GenerateTasksFromEvent = eventID => {
+  let event = eventCollection.find({ _id: eventID }).fetch()
+
+  const haveData =
+    Object.keys(event).length !== 0 && typeof event != "undefined"
+      ? true
+      : false
+
+  if (haveData) {
+    for (let i = 0; i < Object.keys(event).length; i++) {
+      let evt = event[i]
+      //CreateTasksForVendors(event)
+      PaymentReminder(evt)
+      // FloorPlanReminder(evt)
+      // MidMonthReminder()
+      // InsuranceReminder(evt)
+      // FinalizeEventReminder(evt)
+    }
+  } else {
+    console.log("no data loaded")
+  }
 }
 
 export default GenerateTasksFromEvent
