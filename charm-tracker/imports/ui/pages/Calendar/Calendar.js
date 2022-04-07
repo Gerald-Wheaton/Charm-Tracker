@@ -5,6 +5,8 @@ import { NewEventModal } from "../../NewEventModal"
 import { DeleteEventModal } from "../../DeleteEventModal"
 import { useDate } from "../../hooks/useDate"
 import TasksSidebar from "./TasksSidebar"
+import GenerateTasksFromEvent from "../../../api/taskHandling/TaskHandler"
+import { taskCollection } from "../../../api/tasks"
 
 const Calendar = () => {
   const [nav, setNav] = useState(0)
@@ -14,6 +16,10 @@ const Calendar = () => {
       ? JSON.parse(localStorage.getItem("events"))
       : []
   )
+
+  //const generation = GenerateTasksFromEvent()
+  const task = taskCollection.find({}).fetch()
+  console.log(task)
 
   const eventForDate = date => events.find(e => e.date === date)
 

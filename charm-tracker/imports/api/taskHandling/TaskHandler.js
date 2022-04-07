@@ -8,22 +8,24 @@ import remind from "./remindMethods"
 notify the user about upcoming and unfinished tasks. */
 
 // overarching function where event ID is passed in to parse the event data and generate tasks by calling sub-functions
-function GenerateTasksFromEvent(eventID) {
+const GenerateTasksFromEvent = evenIDt => {
   let event = eventCollection.find({}).fetch()
-  console.log(event)
 
   const haveData =
     event.length != 0 /*&& typeof event != undefined*/ ? true : false
 
   if (haveData) {
-    let evt = event[0]
-    CreateTasksForVendors(event)
+    //CreateTasksForVendors(event)
 
-    PaymentReminder(evt)
-    FloorPlanReminder(evt)
-    MidMonthReminder()
-    InsuranceReminder(evt)
-    FinalizeEventReminder(evt)
+    for (let i = 0; i < event.length; i++) {
+      let evt = event[i]
+
+      // PaymentReminder(evt)
+      // FloorPlanReminder(evt)
+      // MidMonthReminder()
+      // InsuranceReminder(evt)
+      // FinalizeEventReminder(evt)
+    }
   } else {
     console.log("no data loaded")
   }
@@ -54,7 +56,7 @@ function CreateTasksForVendors(event) {
 
 // creates a reminder for the payment 60 days before the date for the event
 // includes balance
-function PaymentReminder(event) {
+const PaymentReminder = event => {
   // remind 60 days before
   let date = remind.onSixty(event.date)
 
@@ -64,10 +66,11 @@ function PaymentReminder(event) {
     dueDate: date,
     completed: false,
   })
+  return
 }
 
 // creates a reminder for floor plan review 30 days before the event
-function FloorPlanReminder(event) {
+const FloorPlanReminder = event => {
   // remind 14 days before
   let date = remind.onFourteen(event.date)
 
@@ -77,13 +80,14 @@ function FloorPlanReminder(event) {
     dueDate: date,
     completed: false,
   })
+  return
 }
 
 // handles the reminders at the 15th of each month
-function MidMonthReminder() {}
+const MidMonthReminder = () => {}
 
 // handles the reminders about insurance for events 30 days before the events
-function InsuranceReminder(event) {
+const InsuranceReminder = event => {
   // remind 30 days before
   let date = remind.onThirty(event.date)
 
@@ -93,10 +97,11 @@ function InsuranceReminder(event) {
     dueDate: date,
     completed: false,
   })
+  return
 }
 
 // handles the reminders for finalizing the event 14 days before the event
-function FinalizeEventReminder(event) {
+const FinalizeEventReminder = event => {
   // remind 14 days before
   let date = remind.onFourteen(event.date)
 
@@ -106,6 +111,7 @@ function FinalizeEventReminder(event) {
     dueDate: date,
     completed: false,
   })
+  return
 }
 
 export default GenerateTasksFromEvent
