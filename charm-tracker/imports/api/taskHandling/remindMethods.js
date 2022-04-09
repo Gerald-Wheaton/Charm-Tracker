@@ -23,7 +23,7 @@ const remind = {
   onSixty: date => {
     let dueDate = Date.parse(date)
     dueDate = dueDate - 5184000000
-    dueDate = Date(dueDate)
+    dueDate = dueDate.toString() //Date(dueDate)
     const due = new Date(dueDate).toLocaleString().split(",")
     return due[0]
   },
