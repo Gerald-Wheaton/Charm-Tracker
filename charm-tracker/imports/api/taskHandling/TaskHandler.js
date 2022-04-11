@@ -60,7 +60,16 @@ const FloorPlanReminder = event => {
 }
 
 // handles the reminders at the 15th of each month
-const MidMonthReminder = () => {}
+const MidMonthReminder = event => {
+  let date = remind.onFifteenth()
+
+  taskCollection.insert({
+    eventID: event._id,
+    task: `Do the mid month stuff ${event.name.firstName} ${event.name.lastName}`,
+    dueDate: date,
+    completed: false,
+  })
+}
 
 // handles the reminders about insurance for events 30 days before the events
 const InsuranceReminder = event => {
@@ -104,10 +113,10 @@ const GenerateTasksFromEvent = eventID => {
       let evt = event[i]
       //CreateTasksForVendors(event)
       PaymentReminder(evt)
-      // FloorPlanReminder(evt)
-      // MidMonthReminder()
-      // InsuranceReminder(evt)
-      // FinalizeEventReminder(evt)
+      FloorPlanReminder(evt)
+      MidMonthReminder(evt)
+      InsuranceReminder(evt)
+      FinalizeEventReminder(evt)
     }
   } else {
     console.log("no data loaded")

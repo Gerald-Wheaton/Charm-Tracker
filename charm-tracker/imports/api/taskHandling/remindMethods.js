@@ -26,6 +26,12 @@ const remind = {
     const due = new Date(dueDate).toLocaleString().split(",")
     return due[0]
   },
+  onFifteenth: () => {
+    let dueDate = new Date()
+    dueDate = dueDate.setDate(15)
+    const due = new Date(dueDate).toLocaleString().split(",")
+    return due[0]
+  },
 }
 
 export default remind
