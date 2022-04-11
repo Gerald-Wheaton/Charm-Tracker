@@ -16,6 +16,7 @@ function CreateTasksForVendors(event) {
   let vendorTypeList = vendorTypeCollection.find({}).fetch()
   vendorTypeList.forEach(vendor => {
     taskCollection.insert({
+      taskType: "vendor",
       eventID: event._id,
       vendorTypeID: vendor._id,
       task: `Select ${vendor.name} for ${event.name.lastName}`,
@@ -37,6 +38,7 @@ const PaymentReminder = event => {
   let date = remind.onSixty(event.date)
 
   taskCollection.insert({
+    taskType: "payment",
     eventID: event._id,
     task: `Payment due for ${event.name.firstName} ${event.name.lastName}`,
     dueDate: date,
@@ -51,6 +53,7 @@ const FloorPlanReminder = event => {
   let date = remind.onFourteen(event.date)
 
   taskCollection.insert({
+    taskType: "floorplan",
     eventID: event._id,
     task: `Review floor plan with ${event.name.firstName} ${event.name.lastName}`,
     dueDate: date,
@@ -64,6 +67,7 @@ const MidMonthReminder = event => {
   let date = remind.onFifteenth()
 
   taskCollection.insert({
+    taskType: "midmonth",
     eventID: event._id,
     task: `Do the mid month stuff ${event.name.firstName} ${event.name.lastName}`,
     dueDate: date,
@@ -77,6 +81,7 @@ const InsuranceReminder = event => {
   let date = remind.onThirty(event.date)
 
   taskCollection.insert({
+    taskType: "insurance",
     eventID: event._id,
     task: `Insurance due for ${event.name.firstName} ${event.name.lastName}`,
     dueDate: date,
@@ -91,6 +96,7 @@ const FinalizeEventReminder = event => {
   let date = remind.onFourteen(event.date)
 
   taskCollection.insert({
+    taskType: "finalize",
     eventID: event._id,
     task: `Finalize event for ${event.name.firstName} ${event.name.lastName}`,
     dueDate: date,

@@ -8,7 +8,7 @@ const TasksSidebar = props => {
   const today = new Date().toLocaleDateString()
   const task = taskCollection
     .find({
-      //dueDate: today,
+      dueDate: today,
     })
     .fetch()
 
