@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { taskCollection } from "../../../api/tasks"
 import { eventCollection } from "../../../api/events"
+import SyncLoader from "react-spinners/SyncLoader"
+import Task from "./Task"
+import Paper from "@mui/material/Paper"
 
 const TasksSidebar = props => {
   //TODOs: call below function based on events with due dates corelating to today
   //const today = useToday()
+
+  const [haveData, setHaveData] = useState(false)
   const today = new Date().toLocaleDateString()
   const task = taskCollection
     .find({
@@ -12,11 +17,21 @@ const TasksSidebar = props => {
     })
     .fetch()
 
-  if (task.length !== 0) {
-    console.log(task)
-  }
-  //{`Due today: ${task[0].task}`}
-  return <></> //<>{`Hello ${task[0]}`}</>
+  return (
+    <div>
+      {task.length !== 0 ? (
+        <Paper sx={{ width: 320, maxWidth: "50%" }}>
+          {React.Children.toArray(
+            task.map((tsk, index) => (
+              <Task task={tsk.task} completed={tsk.completed} />
+            ))
+          )}
+        </Paper>
+      ) : (
+        <SyncLoader color={"#36D7B7"} />
+      )}
+    </div>
+  )
 }
 
 export default TasksSidebar
