@@ -13,6 +13,7 @@ import {
   validateTimeSpan,
   validateState,
 } from "./validation/eventValidation"
+import NavBar from "../NavBar";
 
 import { ToastContainer, toast } from "react-toastify"
 
@@ -197,6 +198,7 @@ const CreateNewEvent = () => {
 
   return (
     <div>
+      <NavBar />
       <Header title="Create New Event" />
       <ToastContainer
         position="top-right"
