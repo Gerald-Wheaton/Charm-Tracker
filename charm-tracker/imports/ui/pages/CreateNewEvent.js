@@ -4,6 +4,7 @@ import { eventCollection } from "../../api/events";
 import Header from "../Header";
 import { clientCollection } from "../../api/clients";
 import { vendorTypeCollection } from "../../api/vendorTypes";
+import NavBar from "../NavBar";
 
 
 /* 
@@ -136,6 +137,7 @@ const CreateNewEvent = () => {
 
   return (
     <div>
+      <NavBar />
       <Header title="Create New Event" />
 
       {/* section to select previous customers to autofill the contact details */}

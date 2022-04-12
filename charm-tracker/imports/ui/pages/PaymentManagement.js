@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ReactDom from 'react-dom';
 import Header from "../Header"
-import { clientCollection } from "../../api/clients"
 import { eventCollection } from "../../api/events";
+import NavBar from "../NavBar";
 
 const PaymentManagement = () => {
   const [client, setClient] = useState();
@@ -98,6 +98,7 @@ const PaymentManagement = () => {
 
   return (
     <div>
+      <NavBar />
       <Header title="Payment Management" />
       <select
         name="customer"
