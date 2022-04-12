@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import ReactDom from "react-dom";
 import auth from "../../../api/Auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { withRouter } from "react-router";
@@ -13,7 +14,9 @@ const Register = ({ history }) => {
             await createUserWithEmailAndPassword(auth, email.value, password.value);
             history.push("/");
         } catch (error) {
-            alert(error);
+            console.log(error.code)
+            let element = <p className="err">{error.code}</p>
+            ReactDom.render(element, document.getElementById('error'));
         }
     }, [history]);
 
@@ -21,6 +24,7 @@ const Register = ({ history }) => {
         <div className="login">
             <LoginHeader />
             <form className="login" onSubmit={handleSubmit}>
+                <div id="error"></div>
                 <label>New Email</label>
                 <input type="email" id="email" name="email"></input>
                 <label>New Password</label>

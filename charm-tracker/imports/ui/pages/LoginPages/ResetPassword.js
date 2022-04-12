@@ -1,4 +1,5 @@
 import React, { useCallback, useContext } from "react";
+import ReactDom from "react-dom";
 import { withRouter, Redirect } from "react-router";
 import auth from "../../../api/Auth";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -16,15 +17,15 @@ const ResetPassword = ({ history }) => {
         await sendPasswordResetEmail(auth, email.value)
           .then(() => {
             // Password reset email sent!
+            let element = <p className="success">Password reset email sent!</p>
+            ReactDom.render(element, document.getElementById('error'));
             // ..
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log("error: ", errorCode, errorMessage);
-            // ..
+            console.log(error.code)
+            let element = <p className="err">{error.code}</p>
+            ReactDom.render(element, document.getElementById('error'));
           });
-        history.push("/");
       } catch (error) {
         alert(error);
       }
@@ -42,12 +43,15 @@ const ResetPassword = ({ history }) => {
     <div className="login">
       <LoginHeader />
         <form className="login" onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <button type="submit">Reset Password</button>
+        <div id="error"></div>
+        <label>Email</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+        ></input>
         <Link to="/login" className="login-link">Back to Login</Link>
+        <input type="submit" id="reset" value="Reset Password"></input>
       </form>
     </div>
   );

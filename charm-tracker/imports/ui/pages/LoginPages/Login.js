@@ -1,4 +1,5 @@
 import React, { useCallback, useContext } from "react";
+import ReactDom from 'react-dom';
 import { withRouter, Redirect } from "react-router";
 import auth from "../../../api/Auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -15,7 +16,9 @@ const Login = ({ history }) => {
         await signInWithEmailAndPassword(auth, email.value, password.value);
         history.push("/");
       } catch (error) {
-        alert(error);
+        console.log(error.code)
+        let element = <p className="err">{error.code}</p>
+        ReactDom.render(element, document.getElementById('error'));
       }
     },
     [history]
@@ -31,6 +34,7 @@ const Login = ({ history }) => {
     <div className="login">
       <LoginHeader />
       <form className="login" onSubmit={handleLogin}>
+        <div id="error"></div>
         <label>Email</label>
         <input
           type="text"
