@@ -8,6 +8,9 @@ import TasksSidebar from "./TasksSidebar"
 import GenerateTasksFromEvent from "../../../api/taskHandling/TaskHandler"
 import { taskCollection } from "../../../api/tasks"
 
+import Box from "@mui/material/Box"
+import Grid from "@mui/material/Grid"
+
 const Calendar = () => {
   const [nav, setNav] = useState(0)
   const [clicked, setClicked] = useState()
@@ -26,40 +29,38 @@ const Calendar = () => {
   const { days, dateDisplay } = useDate(events, nav)
 
   return (
-    <>
-      <div id="container">
-        <TasksSidebar />
-        <CalendarHeader
-          dateDisplay={dateDisplay}
-          onNext={() => setNav(nav + 1)}
-          onBack={() => setNav(nav - 1)}
-        />
+    <div id="container">
+      <TasksSidebar />
+      <CalendarHeader
+        dateDisplay={dateDisplay}
+        onNext={() => setNav(nav + 1)}
+        onBack={() => setNav(nav - 1)}
+      />
 
-        <div id="weekdays">
-          <div>Sunday</div>
-          <div>Monday</div>
-          <div>Tuesday</div>
-          <div>Wednesday</div>
-          <div>Thursday</div>
-          <div>Friday</div>
-          <div>Saturday</div>
-        </div>
-
-        <div id="calendar">
-          {days.map((d, index) => (
-            <Day
-              key={index}
-              day={d}
-              onClick={() => {
-                if (d.value !== "padding") {
-                  setClicked(d.date)
-                }
-              }}
-            />
-          ))}
-        </div>
+      <div id="weekdays">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
       </div>
-    </>
+
+      <div id="calendar">
+        {days.map((d, index) => (
+          <Day
+            key={index}
+            day={d}
+            onClick={() => {
+              if (d.value !== "padding") {
+                setClicked(d.date)
+              }
+            }}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
 

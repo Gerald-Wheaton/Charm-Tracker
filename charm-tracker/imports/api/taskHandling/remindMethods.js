@@ -1,10 +1,5 @@
 import React from "react"
 
-//new Date(dueDate).toLocaleString().split(",")[0] ===
-// dueDate = dueDate.toLocaleString()
-// dueDate = dueDate.split(",")
-// dueDate = dueDate[0]
-
 // subtract offset of one day (86400000) in milliseconds
 // this is due to date formatting conflicts.
 const remind = {

@@ -6,10 +6,6 @@ import Task from "./Task"
 import Paper from "@mui/material/Paper"
 
 const TasksSidebar = props => {
-  //TODOs: call below function based on events with due dates corelating to today
-  //const today = useToday()
-
-  const [haveData, setHaveData] = useState(false)
   const today = new Date().toLocaleDateString()
   const task = taskCollection
     .find({
