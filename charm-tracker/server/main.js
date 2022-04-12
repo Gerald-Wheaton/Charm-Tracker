@@ -33,6 +33,8 @@ Meteor.startup(() => {
     return vendorTypeCollection.find()
   })
 
+
+
   Meteor.methods({
     "vendors.updateEventsAdd"({ newVendorType }) {
       new SimpleSchema({

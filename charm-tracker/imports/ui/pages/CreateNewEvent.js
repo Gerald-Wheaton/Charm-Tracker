@@ -5,6 +5,7 @@ import Header from "../Header"
 import { clientCollection } from "../../api/clients"
 import { vendorTypeCollection } from "../../api/vendorTypes"
 import GenerateTasksFromEvent from "../../api/taskHandling/TaskHandler.js"
+import NavBar from "../NavBar"
 
 /* 
 This component gets all of the details necessary for creating an event.
@@ -169,6 +170,7 @@ const CreateNewEvent = () => {
 
   return (
     <div>
+      <NavBar />
       <Header title="Create New Event" />
 
       {/* section to select previous customers to autofill the contact details */}
