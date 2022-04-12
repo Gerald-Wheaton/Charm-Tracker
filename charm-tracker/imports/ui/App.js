@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import PageRoutes from "./PageRoutes"
 import '../api/Firebase'
-import { AuthContext, AuthProvider } from "./AuthManagement.js"
+import { AuthProvider } from "./AuthManagement.js"
 
 
 const App = () => {

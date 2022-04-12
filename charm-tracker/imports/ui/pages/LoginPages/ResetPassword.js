@@ -4,6 +4,8 @@ import auth from "../../../api/Auth";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { AuthContext } from "../../AuthManagement";
 import LoginHeader from "../../LoginHeader";
+import { Link } from "react-router-dom";
+
 
 const ResetPassword = ({ history }) => {
   const handleLogin = useCallback(
@@ -45,6 +47,7 @@ const ResetPassword = ({ history }) => {
           <input name="email" type="email" placeholder="Email" />
         </label>
         <button type="submit">Reset Password</button>
+        <Link to="/login" className="login-link">Back to Login</Link>
       </form>
     </div>
   );

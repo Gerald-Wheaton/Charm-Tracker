@@ -12,7 +12,6 @@ import {
   Login,
   ResetPassword,
 } from "./pages"
-import NavBar from "./NavBar"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import PrivateRoute from "./PrivateRoutes"
 

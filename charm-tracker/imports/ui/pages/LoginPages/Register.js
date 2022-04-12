@@ -21,10 +21,11 @@ const Register = ({ history }) => {
         <div className="login">
             <LoginHeader />
             <form className="login" onSubmit={handleSubmit}>
-                <label>Email</label>
+                <label>New Email</label>
                 <input type="email" id="email" name="email"></input>
-                <label>Confirm Password</label>
+                <label>New Password</label>
                 <input type="password" id="password" name="password"></input>
+                <Link to="/login" className="login-link">Back to Login</Link>
                 <input type="submit" id="register" value="Register"></input>
             </form>
         </div>

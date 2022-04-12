@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactDom from 'react-dom';
 import Header from "../Header"
-import { clientCollection } from "../../api/clients"
 import { eventCollection } from "../../api/events";
 import NavBar from "../NavBar";
 

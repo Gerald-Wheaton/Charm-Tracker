@@ -1,16 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Meteor} from "meteor/meteor"
-import {Session} from "meteor/session"
 import SignOut from "./SignOut";
 
 const NavBar = () => {
 
-  const logout = () => {
-    Meteor.logout();
-    let user = Meteor.user()
-    Session.set("user", user)
-  }
 
   return (
     <nav>
@@ -49,7 +42,6 @@ const NavBar = () => {
 
 
 function OpenNav() {
-  // const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector("nav > ul");
   const links = document.querySelectorAll("nav > ul > li");
 
