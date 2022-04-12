@@ -1,32 +1,21 @@
-import React from "react"
-import { Meteor } from "meteor/meteor"
-import LoginHeader from "../../LoginHeader"
-import { Accounts } from 'meteor/accounts-base'
+import React, { useCallback } from "react";
+import auth from "../../../api/Auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import LoginHeader from "../../LoginHeader";
 
-const Register = () => {
-
-    // will create an user account
-    const handleSubmit = (event) => {
+const Register = ({ history }) => {
+    const handleSubmit = useCallback(async event => {
         event.preventDefault();
-        var email = event.target.email.value
-        var password = event.target.password.value
-
-        event.target.email.value = ""
-        event.target.password.value = ""
-
-        Meteor.call('createAccount', {
-            email: email,
-            password: password,
-        }, (err, res) => {
-            if (err) {
-                alert(err);
-            } else {
-                console.log(res)// success!
-                alert(res)
-            }
-        });
-    }
-
+        const { email, password } = event.target.elements;
+        try {
+            await createUserWithEmailAndPassword(auth, email.value, password.value);
+            history.push("/");
+        } catch (error) {
+            alert(error);
+        }
+    }, [history]);
 
     return (
         <div className="login">
@@ -39,7 +28,7 @@ const Register = () => {
                 <input type="submit" id="register" value="Register"></input>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Register
+export default withRouter(Register);

@@ -1,20 +1,53 @@
-import React from "react"
-import { Meteor } from "meteor/meteor"
-import LoginHeader from "../../LoginHeader"
+import React, { useCallback, useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import auth from "../../../api/Auth";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { AuthContext } from "../../AuthManagement";
+import LoginHeader from "../../LoginHeader";
 
-const ResetPassword = () => {
+const ResetPassword = ({ history }) => {
+  const handleLogin = useCallback(
+    async event => {
+      event.preventDefault();
+      const { email } = event.target.elements;
+      try {
+        await sendPasswordResetEmail(auth, email.value)
+          .then(() => {
+            // Password reset email sent!
+            // ..
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("error: ", errorCode, errorMessage);
+            // ..
+          });
+        history.push("/");
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [history]
+  );
+
+  const { currentUser } = useContext(AuthContext);
+
+  if (currentUser) {
+    return <Redirect to='/' />;
+  }
+
   return (
     <div className="login">
       <LoginHeader />
-      <form className="login">
-        <label>New Password</label>
-        <input type="text" id="npassword" name="npassword"></input>
-        <label>Confirm Password</label>
-        <input type="password" id="cpassword" name="cpassword"></input>
-        <input type="submit" id="reset" value="Reset Password"></input>
+        <form className="login" onSubmit={handleLogin}>
+        <label>
+          Email
+          <input name="email" type="email" placeholder="Email" />
+        </label>
+        <button type="submit">Reset Password</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default ResetPassword
+export default withRouter(ResetPassword);

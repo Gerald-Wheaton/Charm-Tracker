@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {Meteor} from "meteor/meteor"
 import {Session} from "meteor/session"
+import SignOut from "./SignOut";
 
 const NavBar = () => {
 
@@ -38,8 +39,8 @@ const NavBar = () => {
         <li>
           <Link to="/activity-stream" onClick={() => OpenNav()}>Activity Stream</Link>
         </li>
-        <li>
-          <button onClick={logout} className="buttonaslink">Logout</button>
+        <li onClick={() => OpenNav()}>
+          <SignOut />
         </li>
       </ul>
     </nav>

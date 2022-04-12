@@ -1,27 +1,19 @@
 import React, { useState } from "react"
-import {Meteor} from 'meteor/meteor'
-import Login from "./pages/LoginPages/Login.js"
-import ResetPassword from "./pages/LoginPages/ResetPassword.js"
-import PageRoutes from "./PageRoutes.js"
-import { Register } from "./pages/index.js"
-import LoginRoutes from "./LoginRoutes.js"
-import {Session} from "meteor/session"
+import PageRoutes from "./PageRoutes"
+import '../api/Firebase'
+import { AuthContext, AuthProvider } from "./AuthManagement.js"
+
 
 const App = () => {
 
-  Session.setDefault("user", null);
 
-  let user = Session.get("user");
-  
-  if (user === null) {
-    return <LoginRoutes />
-  } else {
-    return (
-      <>
+  return (
+    <>
+      <AuthProvider>
         <PageRoutes />
-      </>
-    )
-  }
+      </AuthProvider>
+    </>
+  )
 }
 
 export default App

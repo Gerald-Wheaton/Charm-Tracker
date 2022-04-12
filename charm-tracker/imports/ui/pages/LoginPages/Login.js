@@ -1,36 +1,30 @@
-import React, { useState } from "react"
-import { Meteor } from "meteor/meteor"
-import LoginHeader from "../../LoginHeader"
-import { Accounts } from 'meteor/accounts-base'
-import { Link } from "react-router-dom"
-import {Session} from "meteor/session"
+import React, { useCallback, useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import auth from "../../../api/Auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { AuthContext } from "../../AuthManagement";
+import { Link } from "react-router-dom";
+import LoginHeader from "../../LoginHeader";
 
-const Login = props => {
-
-
-  const handleLogin = (event) => {
-    event.preventDefault()
-    let email = event.target.email.value;
-    let password = event.target.password.value;
-    Meteor.loginWithPassword(email, password, function (err) {
-      if (err){
-        console.log(err);
-        alert(err);
+const Login = ({ history }) => {
+  const handleLogin = useCallback(
+    async event => {
+      event.preventDefault();
+      const { email, password } = event.target.elements;
+      try {
+        await signInWithEmailAndPassword(auth, email.value, password.value);
+        history.push("/");
+      } catch (error) {
+        alert(error);
       }
-    });
-    let user = Meteor.user();
+    },
+    [history]
+  );
 
-    Session.set("user", user);
+  const { currentUser } = useContext(AuthContext);
 
-    // Meteor.loginWithPassword(email, password, error => {
-    //   if (error) {
-    //     console.log(error)
-    //   } else {
-    //     Meteor.setLoggingIn(Meteor.loggingIn())
-    //     window.location.replace("/member-area")
-    //     setLoggedIn(true)
-    //   }
-    // })
+  if (currentUser) {
+    return <Redirect to='/' />;
   }
 
   return (
@@ -49,14 +43,13 @@ const Login = props => {
           id="password"
           name="password"
         ></input>
-        <a href="#" className="login-link">
-          Forgot Password?
-        </a>
+        <Link to="/reset-password" className="login-link">Forgot Password?</Link>
         <Link to="/register" className="login-link">Create Account</Link>
         <input type="submit" id="login"></input>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default withRouter(Login);
+
