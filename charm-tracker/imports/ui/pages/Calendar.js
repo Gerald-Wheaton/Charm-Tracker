@@ -4,6 +4,7 @@ import { Day } from '../Day';
 import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
 import { useDate } from '../hooks/useDate';
+import NavBar from '../NavBar';
 
  const Calendar = () => {
   const [nav, setNav] = useState(0);
@@ -24,6 +25,7 @@ import { useDate } from '../hooks/useDate';
 
   return(
     <>
+    <NavBar />
       <div id="container">
         <CalendarHeader 
           dateDisplay={dateDisplay}

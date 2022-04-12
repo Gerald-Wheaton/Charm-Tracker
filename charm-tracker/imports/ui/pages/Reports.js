@@ -5,6 +5,7 @@ import { clientCollection } from "../../api/clients";
 import ClientReport from "../ClientReport";
 import EventReports from "../EventReports";
 import ReactDom from "react-dom";
+import NavBar from "../NavBar";
 
 const Reports = () => {
 
@@ -60,6 +61,7 @@ const Reports = () => {
 
   return (
     <div>
+      <NavBar />
       <Header title="Reports" />
       <form onSubmit={handleSubmit}>
         <p>Filter:</p>
@@ -100,7 +102,8 @@ const Reports = () => {
       <div id="reports"></div>
       <div id="eventReports"></div>
 
-      
+      {/* print button */}
+      <button onClick={() =>window.print()}>Print this page</button>
     </div>
   )
 }
