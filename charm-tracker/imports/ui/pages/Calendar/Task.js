@@ -10,6 +10,8 @@ import ContentCut from "@mui/icons-material/ContentCut"
 import ContentCopy from "@mui/icons-material/ContentCopy"
 import ContentPaste from "@mui/icons-material/ContentPaste"
 import Cloud from "@mui/icons-material/Cloud"
+import { faBarsProgress } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Task = props => {
   const { task, completed } = props
@@ -17,7 +19,7 @@ const Task = props => {
     <MenuList>
       <MenuItem>
         <ListItemIcon>
-          <Cloud fontSize="small" />
+          <FontAwesomeIcon icon={faBarsProgress} />
         </ListItemIcon>
         <ListItemText>Event {completed ? "Done" : "Incomplete"}</ListItemText>
       </MenuItem>
