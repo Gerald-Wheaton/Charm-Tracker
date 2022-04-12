@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {Meteor} from "meteor/meteor"
+import {Session} from "meteor/session"
 
 const NavBar = () => {
+
+  const logout = () => {
+    Meteor.logout();
+    let user = Meteor.user()
+    Session.set("user", user)
+  }
+
   return (
     <nav>
       <div className="hamburger"
@@ -30,7 +39,7 @@ const NavBar = () => {
           <Link to="/activity-stream" onClick={() => OpenNav()}>Activity Stream</Link>
         </li>
         <li>
-          <Link to="/logout" onClick={() => OpenNav()}>Logout</Link>
+          <button onClick={logout} className="buttonaslink">Logout</button>
         </li>
       </ul>
     </nav>

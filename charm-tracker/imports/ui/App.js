@@ -1,21 +1,27 @@
 import React, { useState } from "react"
-// import { UP_Collection_Access } from './../api/user_posts.js';
+import {Meteor} from 'meteor/meteor'
 import Login from "./pages/LoginPages/Login.js"
-import ResetPassword from "./pages/ResetPassword.js"
+import ResetPassword from "./pages/LoginPages/ResetPassword.js"
 import PageRoutes from "./PageRoutes.js"
+import { Register } from "./pages/index.js"
+import LoginRoutes from "./LoginRoutes.js"
+import {Session} from "meteor/session"
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState()
 
-  if (!loggedIn) {
-    return <Login setLoggedIn={setLoggedIn} />
+  Session.setDefault("user", null);
+
+  let user = Session.get("user");
+  
+  if (user === null) {
+    return <LoginRoutes />
+  } else {
+    return (
+      <>
+        <PageRoutes />
+      </>
+    )
   }
-  return (
-    <>
-      <PageRoutes />
-      {/* <Title title={this.props.passedPropTitle} /> */}
-    </>
-  )
 }
 
 export default App

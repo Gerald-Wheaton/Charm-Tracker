@@ -100,7 +100,8 @@ const Reports = () => {
       <div id="reports"></div>
       <div id="eventReports"></div>
 
-      
+      {/* print button */}
+      <button onclick="window.print()">Print this page</button>
     </div>
   )
 }

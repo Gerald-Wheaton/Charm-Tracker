@@ -8,10 +8,10 @@ import {
   ActivityStream,
   Logout,
   EditEvent,
+  Register,
 } from "./pages"
 import NavBar from "./NavBar"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import { route } from "express/lib/application"
 
 const PageRoutes = () => {
   return (
@@ -28,6 +28,7 @@ const PageRoutes = () => {
           <Route path="/activity-stream" component={ActivityStream} />
           <Route path="/logout" component={Logout} />
           <Route exact path="/" component={Calendar} />
+          <Route path="/register" component={Register} />
         </Switch>
       </div>
     </Router>

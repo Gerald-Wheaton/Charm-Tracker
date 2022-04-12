@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import {Accounts} from 'meteor/accounts-base';
 import SimpleSchema from 'simpl-schema';
 
 import { eventCollection } from './../imports/api/events';
@@ -6,7 +7,24 @@ import { clientCollection } from './../imports/api/clients';
 import { vendorCollection} from '../imports/api/vendors';
 import { vendorTypeCollection } from '../imports/api/vendorTypes';
 
+Meteor.methods({
+  'createAccount'({ email, password }) {
+    new SimpleSchema({
+      email: { type: String },
+      password: { type: String }
+    }).validate({ email, password });
 
+    var id = Accounts.createUser({
+      email, password
+    });
+    if(id) {
+      console.log(id)
+    } else {
+      console.log("Did not create user")
+    }
+
+  }
+});
 
 Meteor.startup(() => {
     //Synchronize 'events' collection with every subscriber
@@ -28,6 +46,11 @@ Meteor.startup(() => {
     Meteor.publish("vendorTypes/all", function() {
       return vendorTypeCollection.find();
     });
+
+  Accounts.config({
+    sendVerificationEmail: true
+  });
+
 
   Meteor.methods({
     'vendors.updateEventsAdd'({ newVendorType }) {

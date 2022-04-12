@@ -1,31 +1,36 @@
 import React, { useState } from "react"
 import { Meteor } from "meteor/meteor"
 import LoginHeader from "../../LoginHeader"
+import { Accounts } from 'meteor/accounts-base'
+import { Link } from "react-router-dom"
+import {Session} from "meteor/session"
 
 const Login = props => {
-  const { setLoggedIn } = props
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
 
-  //Use this to register a new user account
-  const handleSubmit = async e => {
-    Accounts.createUser({ email: email, passwor: password }, error => {
-      if (error) {
-        console.log(error)
-      }
-    })
-  }
 
-  const handleLogin = (email, password) => {
-    Meteor.loginWithPassword(email, password, error => {
-      if (error) {
-        console.log(error)
-      } else {
-        Meteor.setLoggingIn(Meteor.loggingIn())
-        window.location.replace("/member-area")
-        setLoggedIn(true)
+  const handleLogin = (event) => {
+    event.preventDefault()
+    let email = event.target.email.value;
+    let password = event.target.password.value;
+    Meteor.loginWithPassword(email, password, function (err) {
+      if (err){
+        console.log(err);
+        alert(err);
       }
-    })
+    });
+    let user = Meteor.user();
+
+    Session.set("user", user);
+
+    // Meteor.loginWithPassword(email, password, error => {
+    //   if (error) {
+    //     console.log(error)
+    //   } else {
+    //     Meteor.setLoggingIn(Meteor.loggingIn())
+    //     window.location.replace("/member-area")
+    //     setLoggedIn(true)
+    //   }
+    // })
   }
 
   return (
@@ -37,18 +42,17 @@ const Login = props => {
           type="text"
           id="email"
           name="email"
-          onChange={e => setEmail(e.target.value)}
         ></input>
         <label>Password</label>
         <input
           type="password"
           id="password"
           name="password"
-          onChange={e => setPassword(e.target.value)}
         ></input>
         <a href="#" className="login-link">
           Forgot Password?
         </a>
+        <Link to="/register" className="login-link">Create Account</Link>
         <input type="submit" id="login"></input>
       </form>
     </div>
