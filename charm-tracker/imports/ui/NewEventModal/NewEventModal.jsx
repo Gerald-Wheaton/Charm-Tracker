@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { eventCollection } from "../../api/events";
 
 export const NewEventModal = ({ onSave, onClose }) => {
   const [title, setTitle] = useState('');

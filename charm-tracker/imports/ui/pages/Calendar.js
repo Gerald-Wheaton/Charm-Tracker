@@ -24,7 +24,7 @@ import { useDate } from '../hooks/useDate';
 
   return(
     <>
-      <div id="container">
+      <div id="calendar_page">
         <CalendarHeader 
           dateDisplay={dateDisplay}
           onNext={() => setNav(nav + 1)}
@@ -32,13 +32,13 @@ import { useDate } from '../hooks/useDate';
         />
 
         <div id="weekdays">
-          <div>Sunday</div>
-          <div>Monday</div>
-          <div>Tuesday</div>
-          <div>Wednesday</div>
-          <div>Thursday</div>
-          <div>Friday</div>
-          <div>Saturday</div>
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
         </div>
 
         <div id="calendar">
