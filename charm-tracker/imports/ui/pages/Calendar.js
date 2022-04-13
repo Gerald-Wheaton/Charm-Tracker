@@ -4,6 +4,7 @@ import { Day } from '../Day';
 import { NewEventModal } from '../NewEventModal';
 import { DeleteEventModal } from '../DeleteEventModal';
 import { useDate } from '../hooks/useDate';
+import NavBar from '../NavBar';
 
  const Calendar = () => {
   const [nav, setNav] = useState(0);
@@ -65,25 +66,4 @@ import { useDate } from '../hooks/useDate';
 export default Calendar
 
 
- //{
-        // clicked && !eventForDate(clicked) &&
-        // <NewEventModal
-        //   onClose={() => setClicked(null)}
-        //   onSave={title => {
-        //     setEvents([ ...events, { title, date: clicked }]);
-        //     setClicked(null);
-        //   }}
-        //>
-     // }
-
-      //{
-        // clicked && eventForDate(clicked) &&
-        // <DeleteEventModal 
-        //   eventText={eventForDate(clicked).title}
-        //   onClose={() => setClicked(null)}
-        //   onDelete={() => {
-        //     setEvents(events.filter(e => e.date !== clicked));
-        //     setClicked(null);
-        //   }}
-      //  />
-    //  } 
+  
