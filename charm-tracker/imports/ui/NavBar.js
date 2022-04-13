@@ -13,6 +13,7 @@ const NavBar = () => {
         <div className="line"></div>
         <div className="line"></div>
       </div>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <ul>
         <li>
           <Link to="/calendar" onClick={() => OpenNav()}>Calendar</Link>
