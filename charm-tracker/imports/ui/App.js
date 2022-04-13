@@ -5,8 +5,6 @@ import { AuthProvider } from "./AuthManagement.js"
 
 
 const App = () => {
-
-
   return (
     <>
       <AuthProvider>

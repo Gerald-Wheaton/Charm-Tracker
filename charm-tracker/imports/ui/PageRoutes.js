@@ -21,8 +21,12 @@ const PageRoutes = () => {
       <div>
         <Switch>
           <PrivateRoute exact path="/" component={Calendar} />
+          <PrivateRoute path="/calendar" component={Calendar} />
           <PrivateRoute path="/create-new-event" component={CreateNewEvent} />
-          <PrivateRoute path="/payment-management" component={PaymentManagement} />
+          <PrivateRoute
+            path="/payment-management"
+            component={PaymentManagement}
+          />
           <PrivateRoute path="/edit-vendors" component={EditVendors} />
           <PrivateRoute path="/reports" component={Reports} />
           <PrivateRoute path="/edit-event" component={EditEvent} />

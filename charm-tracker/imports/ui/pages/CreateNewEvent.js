@@ -16,6 +16,7 @@ import {
 import NavBar from "../NavBar";
 
 import { ToastContainer, toast } from "react-toastify"
+import GenerateTasksFromEvent from "../../api/taskHandling/TaskHandler.js"
 
 /* 
 This component gets all of the details necessary for creating an event.
@@ -44,6 +45,7 @@ const CreateNewEvent = () => {
       progress: undefined,
     })
   }
+
   const getData = event => {
     if (event.target.value != "") {
       let client = clientCollection.find({ _id: event.target.value }).fetch()
@@ -168,6 +170,10 @@ const CreateNewEvent = () => {
           })
           console.log("Event created")
         }
+
+        //TODO: call the tasks fucntion here????
+        console.log(eventID)
+        GenerateTasksFromEvent(eventID)
 
         // adding in the vendors
         let vendorTypes = vendorTypeCollection.find({}).fetch()

@@ -1,5 +1,5 @@
 export { default as ActivityStream } from "./ActivityStream"
-export { default as Calendar } from "./Calendar"
+export { default as Calendar } from "./Calendar/Calendar"
 export { default as CreateNewEvent } from "./CreateNewEvent"
 export { default as EditVendors } from "./EditVendors"
 export { default as Login } from "./LoginPages/Login"
