@@ -4,11 +4,9 @@ import { Day } from "../../Day"
 import { NewEventModal } from "../../NewEventModal"
 import { DeleteEventModal } from "../../DeleteEventModal"
 import { useDate } from "../../hooks/useDate"
-import NavBar from '../../NavBar'
+import NavBar from "../../NavBar"
 import TasksSidebar from "./TasksSidebar"
-import GenerateTasksFromEvent from "../../../api/taskHandling/TaskHandler"
-import { taskCollection } from "../../../api/tasks"
-
+import { eventCollection } from "../../../api/events"
 
 const Calendar = () => {
   const [nav, setNav] = useState(0)
@@ -29,39 +27,39 @@ const Calendar = () => {
 
   return (
     <>
-    <NavBar />
-    <div id="container">
-      <TasksSidebar />
-      <CalendarHeader
-        dateDisplay={dateDisplay}
-        onNext={() => setNav(nav + 1)}
-        onBack={() => setNav(nav - 1)}
-      />
+      <NavBar />
+      <div id="container">
+        <TasksSidebar />
+        <CalendarHeader
+          dateDisplay={dateDisplay}
+          onNext={() => setNav(nav + 1)}
+          onBack={() => setNav(nav - 1)}
+        />
 
-      <div id="weekdays">
-        <div>Sunday</div>
-        <div>Monday</div>
-        <div>Tuesday</div>
-        <div>Wednesday</div>
-        <div>Thursday</div>
-        <div>Friday</div>
-        <div>Saturday</div>
-      </div>
+        <div id="weekdays">
+          <div>Sunday</div>
+          <div>Monday</div>
+          <div>Tuesday</div>
+          <div>Wednesday</div>
+          <div>Thursday</div>
+          <div>Friday</div>
+          <div>Saturday</div>
+        </div>
 
-      <div id="calendar">
-        {days.map((d, index) => (
-          <Day
-            key={index}
-            day={d}
-            onClick={() => {
-              if (d.value !== "padding") {
-                setClicked(d.date)
-              }
-            }}
-          />
-        ))}
+        <div id="calendar">
+          {days.map((d, index) => (
+            <Day
+              key={index}
+              day={d}
+              onClick={() => {
+                if (d.value !== "padding") {
+                  setClicked(d.date)
+                }
+              }}
+            />
+          ))}
+        </div>
       </div>
-    </div>
     </>
   )
 }
@@ -76,7 +74,7 @@ export default Calendar
 //     setEvents([ ...events, { title, date: clicked }]);
 //     setClicked(null);
 //   }}
-//>
+// />
 // }
 
 //{
