@@ -42,7 +42,7 @@ const RemoveEvents = (props) => {
 
 
   return (
-    <div>
+    <div className="removeEventsButton">
         <form onSubmit={handleSubmit}>
             <button>Remove event</button>
         </form>
