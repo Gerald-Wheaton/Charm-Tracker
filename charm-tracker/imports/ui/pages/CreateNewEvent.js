@@ -12,8 +12,9 @@ import {
   validateYear,
   validateTimeSpan,
   validateState,
+  preventEmptyField,
 } from "./validation/eventValidation"
-import NavBar from "../NavBar";
+import NavBar from "../NavBar"
 
 import { ToastContainer, toast } from "react-toastify"
 import GenerateTasksFromEvent from "../../api/taskHandling/TaskHandler.js"
@@ -73,9 +74,12 @@ const CreateNewEvent = () => {
     let eventID = ""
     let data = event.target
 
+    // value from name This Event is
+    let newEvtName = preventEmptyField(data.evtName.value, "EVENT NAME")
+
     // values from contact details
-    let newfname = data.fname.value
-    let newlname = data.lname.value
+    let newfname = preventEmptyField(data.fname.value, "FIRST NAME")
+    let newlname = preventEmptyField(data.lname.value, "LAST NAME")
     let newEmail = validateEmail(data)
     let newPhoneNum = validatePhone(data)
     let newAddress = data.address.value
@@ -91,6 +95,7 @@ const CreateNewEvent = () => {
 
     try {
       if (
+        newEvtName &&
         newfname &&
         newlname &&
         newEmail &&
@@ -104,6 +109,9 @@ const CreateNewEvent = () => {
         newStopTime &&
         newPrice
       ) {
+        // value from Name This Event
+        data.evtName.value = ""
+
         // values from contact details
         data.fname.value = ""
         data.lname.value = ""
@@ -144,6 +152,7 @@ const CreateNewEvent = () => {
           eventID = eventCollection.insert({
             createdAt: Date.now(),
             clientID: client.insertedId,
+            eventName: newEvtName,
             name: {
               firstName: newfname,
               lastName: newlname,
@@ -159,6 +168,7 @@ const CreateNewEvent = () => {
           eventID = eventCollection.insert({
             createdAt: Date.now(),
             clientID: customer.id,
+            eventName: newEvtName,
             name: {
               firstName: newfname,
               lastName: newlname,
@@ -175,6 +185,7 @@ const CreateNewEvent = () => {
         //TODO: call the tasks fucntion here????
         console.log(eventID)
         GenerateTasksFromEvent(eventID)
+        console.log(eventCollection.find({}).fetch())
 
         // adding in the vendors
         let vendorTypes = vendorTypeCollection.find({}).fetch()
@@ -241,6 +252,16 @@ const CreateNewEvent = () => {
 
       <div className="ContactDetails">
         <form onSubmit={handleSubmit}>
+          <fieldset className="EventName">
+            <legend>Name This Event</legend>
+            <div>
+              <label>
+                Event Title <br />
+                <input type="input" id="evtName" name="evtName"></input>
+              </label>
+            </div>
+          </fieldset>
+
           <fieldset className="ContactDetails">
             <legend>Contact Details</legend>
             <div>
