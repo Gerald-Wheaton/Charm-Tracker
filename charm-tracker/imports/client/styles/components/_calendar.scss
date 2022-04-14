@@ -62,13 +62,12 @@
     background-color:#e8f4fa;
   }
   .event {
-    font-size: 10px;
+    font-size: 12px;
     padding: 3px;
-    background-color: #58bae4;
+    background-color: $text-color-green;
     color: white;
     border-radius: 5px;
-    max-height: 55px;
-    overflow: hidden;
+    overflow-wrap: break-word;
   }
   .padding {
     cursor: default !important;
