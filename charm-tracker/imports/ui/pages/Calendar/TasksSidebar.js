@@ -13,6 +13,8 @@ const TasksSidebar = props => {
     })
     .fetch()
 
+  const evt = eventCollection.find({}).fetch()
+
   return (
     <div>
       {task.length !== 0 ? (
