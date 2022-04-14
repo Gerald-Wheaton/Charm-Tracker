@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import ReactDom from "react-dom"
 import { Link } from "react-router-dom"
 import { eventCollection } from "../api/events"
+import Task from "./pages/Calendar/Task"
 import RemoveEvents from "./RemoveEvents"
 
 const EventTaskBar = () => {
@@ -18,8 +19,9 @@ const EventTaskBar = () => {
       element = (
         <>
           <p>
-            {selectedEvent[0].name.firstName} {selectedEvent[0].name.lastName}'s event is
-            selected
+            <Task task={"Select Carterer"}
+              completed={false}
+              taskId={none}/>
           </p>
         </>
       )
