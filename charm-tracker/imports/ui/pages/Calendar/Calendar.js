@@ -26,7 +26,7 @@ const Calendar = () => {
   const { days, dateDisplay } = useDate(events, nav)
 
   return (
-    <>
+    <div id="calendarContainer">
       <NavBar />
       <TasksSidebar />
       <div id="container">
@@ -61,7 +61,7 @@ const Calendar = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

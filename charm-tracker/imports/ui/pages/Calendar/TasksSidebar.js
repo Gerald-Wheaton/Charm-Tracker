@@ -4,6 +4,7 @@ import { eventCollection } from "../../../api/events"
 import BounceLoader from "react-spinners/BounceLoader"
 import Task from "./Task"
 import Paper from "@mui/material/Paper"
+import EventTaskBar from "../../EventTaskBar"
 
 const TasksSidebar = (props) => {
   const today = new Date().toLocaleDateString()
@@ -19,6 +20,7 @@ const TasksSidebar = (props) => {
         <a href="#" className="closebtn phoneOnly" onClick={() => closeNav()}>
           &times;
         </a>
+        <h3>Today's Tasks</h3>
         {task.length !== 0 ? (
           <div>
             {React.Children.toArray(
@@ -33,9 +35,11 @@ const TasksSidebar = (props) => {
           </div>
         ) : (
           <div className="loader">
-            <BounceLoader color={"#B8D9C6"} />
+            <p>No tasks for today</p>
           </div>
         )}
+        <hr />
+        <EventTaskBar />
       </div>
     </>
   )

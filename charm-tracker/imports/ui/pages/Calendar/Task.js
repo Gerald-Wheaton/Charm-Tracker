@@ -40,7 +40,6 @@ const Task = (props) => {
         )}
         {completed ? <p className="task completed">{task}</p> : <p className="task">{task}</p>}
       </li>
-      <hr />
     </ul>
   )
 }

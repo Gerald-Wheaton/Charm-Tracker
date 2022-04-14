@@ -29,7 +29,7 @@ const PageRoutes = () => {
           />
           <PrivateRoute path="/edit-vendors" component={EditVendors} />
           <PrivateRoute path="/reports" component={Reports} />
-          <PrivateRoute path="/edit-event" component={EditEvent} />
+          <PrivateRoute path="/edit-event/:eventID" component={EditEvent} />
           <PrivateRoute path="/activity-stream" component={ActivityStream} />
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
