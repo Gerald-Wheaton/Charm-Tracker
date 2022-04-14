@@ -215,7 +215,8 @@ const CreateNewEvent = () => {
   let clients = clientCollection.find({}).fetch()
 
   return (
-    <div>
+  
+    <div class="createEvent">
       <NavBar />
       <Header title="Create New Event" />
       <ToastContainer

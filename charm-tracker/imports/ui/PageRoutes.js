@@ -17,8 +17,10 @@ import PrivateRoute from "./PrivateRoutes"
 
 const PageRoutes = () => {
   return (
+    
     <Router>
       <div>
+        
         <Switch>
           <PrivateRoute exact path="/" component={Calendar} />
           <PrivateRoute path="/calendar" component={Calendar} />

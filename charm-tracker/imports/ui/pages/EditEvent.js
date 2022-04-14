@@ -106,6 +106,8 @@ const EditEvent = () => {
 
     return (
         <div>
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <NavBar />
             <Header title="Edit Event" />
 

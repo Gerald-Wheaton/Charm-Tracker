@@ -126,21 +126,18 @@ const Reports = () => {
       <Header title="Reports" />
       <form onSubmit={handleSubmit}>
         {/* filters input */}
-        <label className="dateFilter">
-          Start Date:
-          <input type="date" name="startDate"></input>
+        <label className="dateFilter">Start Date:
+          <input type="date" class= "startDate" name="startDate"></input>
         </label>
-        <label className="dateFilter">
-          Stop Date:
-          <input type="date" name="stopDate"></input>
+        <label className="dateFilter">Stop Date:
+          <input type="date" class= "stopDate" name="stopDate"></input>
         </label>
 
-        <label className="nameFilter">
-          Email
-          <input type="text" name="clientEmail"></input>
+        <label className="nameFilter">Email
+          <input class="email" type="text" name="clientEmail"></input>
         </label>
 
-        <button>Search</button>
+        <button class= "search">Search</button>
       </form>
 
       {/* reports rendered here */}
@@ -149,7 +146,7 @@ const Reports = () => {
       <div id="eventReports"></div>
 
       {/* print button */}
-      <button onClick={() => window.print()}>Print this page</button>
+      <button class="print" onClick={() => window.print()}>Print this page</button>
     </div>
   )
 }

@@ -8,6 +8,7 @@ const Header = (props) => {
   const { title } = props;
   return (
     <div>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <div className="header">
         <img
           src="/images/southerncharmslogo.png"
