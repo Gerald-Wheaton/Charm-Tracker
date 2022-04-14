@@ -26,7 +26,7 @@ const Calendar = () => {
   const { days, dateDisplay } = useDate(events, nav)
 
   return (
-    <div id="calendarContainer">
+    <div id="calendar_page">
       <NavBar />
       <TasksSidebar />
       <div id="container">
