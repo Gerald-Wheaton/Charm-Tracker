@@ -25,7 +25,6 @@ import NavBar from '../NavBar';
 
   return(
     <>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <div id="calendar_page">
         <CalendarHeader 
           dateDisplay={dateDisplay}

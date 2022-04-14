@@ -64,6 +64,7 @@ const Reports = () => {
       <NavBar />
       <Header title="Reports" />
       <form onSubmit={handleSubmit}>
+        <div class= "filter">
         <p>Filter:</p>
         <label>
           <input type="radio" name="filter" value="date"></input>
@@ -79,22 +80,22 @@ const Reports = () => {
           <input type="radio" name="filter" value="both"></input>
           Both
         </label>
-
+        </div>
         <br />
 
         {/* filters input */}
-        <label className="dateFilter">Start Date:
-          <input type="date" name="startDate"></input>
+        <label class="dateFilter">Start Date:
+          <input type="date" class= "startDate" name="startDate"></input>
         </label>
         <label className="dateFilter">Stop Date:
-          <input type="date" name="stopDate"></input>
+          <input type="date" class= "stopDate" name="stopDate"></input>
         </label>
 
         <label className="nameFilter">Email
-          <input type="text" name="clientEmail"></input>
+          <input class="email" type="text" name="clientEmail"></input>
         </label>
 
-        <button>Search</button>
+        <button class= "search">Search</button>
       </form>
 
       {/* reports rendered here */}

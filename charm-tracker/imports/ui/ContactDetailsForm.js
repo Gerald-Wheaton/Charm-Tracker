@@ -13,7 +13,6 @@ For further work:
 const ContactDetailsForm = (props) => {
   return (
     <div className="ContactDetails">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <form>
         <fieldset className="ContactDetails">
           <legend>Contact Details</legend>
