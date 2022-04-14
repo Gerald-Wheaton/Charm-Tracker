@@ -9,60 +9,52 @@ import TasksSidebar from "./TasksSidebar"
 import { eventCollection } from "../../../api/events"
 
 const formatDateTo = (date, type) => {
-  let fDate = ""
-  let splitDate = ""
-  let mLen = 0
-  let dLen = 0
-  formattedDate = []
-  switch (type) {
-    case "yyyy-mm-dd":
-      splitDate = date.split("/")
+  if (type === "yyyy-mm-dd") {
+    let splitDate = date.split("/")
 
-      mLen = splitDate[0].length
-      if (mLen < 2) {
-        splitDate[0] = "0" + splitDate[0]
-      }
+    let mLen = splitDate[0].length
+    if (mLen < 2) {
+      splitDate[0] = "0" + splitDate[0]
+    }
 
-      dLen = splitDate[1].length
-      if (dLen < 2) {
-        splitDate[1] = "0" + splitDate[1]
-      }
+    let dLen = splitDate[1].length
+    if (dLen < 2) {
+      splitDate[1] = "0" + splitDate[1]
+    }
 
-      formattedDate = [splitDate[2], splitDate[0], splitDate[1]]
-      fDate = formattedDate.join("-")
-      break
-    case "mm/dd/yyyy":
-      splitDate = date.split("-")
-
-      mInitChar = splitDate[1].charAt(0)
-      if (mInitChar === "0") {
-        splitDate[1] = splitDate[1].replaceAll("0", "")
-      }
-
-      dInitChar = splitDate[2].charAt(0)
-      if (dInitChar === "0") {
-        splitDate[2] = splitDate[2].replaceAll("0", "")
-      }
-
-      formattedDate = [splitDate[1], splitDate[2], splitDate[0]]
-      fDate = formattedDate.join("/")
-      break
+    let ymdDate = [splitDate[2], splitDate[0], splitDate[1]]
+    return ymdDate.join("-")
   }
-  return fDate
+
+  if (type === "mm/dd/yyyy") {
+    let dateArray = date.split("-")
+
+    let mInitChar = dateArray[1].charAt(0)
+    if (mInitChar === "0") {
+      dateArray[1] = dateArray[1].replaceAll("0", "")
+    }
+
+    let dInitChar = dateArray[2].charAt(0)
+    if (dInitChar === "0") {
+      dateArray[2] = dateArray[2].replaceAll("0", "")
+    }
+
+    let mdyDate = [dateArray[1], dateArray[2], dateArray[0]]
+    return mdyDate.join("/")
+  }
+  return ""
 }
 
-const eventToday = today => {
+const eventsToday = today => {
   let specificDate = formatDateTo(today, "yyyy-mm-dd")
   const evt = eventCollection.find({ date: specificDate }).fetch()
   return evt
 }
 
 const eventDays = event => {
-  console.log(formatDateTo(event[0].date, "mm/dd/yyyy"))
   let days = []
-  for (let i = 0; i < event.lenth; i++) {
-    console.log(event[i].date)
-    let fDate = formatDateTo(event[i].date, "mm/dd/yyy")
+  for (const e of event) {
+    let fDate = formatDateTo(e.date, "mm/dd/yyyy")
     days.push(fDate)
   }
 
@@ -70,7 +62,6 @@ const eventDays = event => {
 }
 
 const Calendar = () => {
-  //const [evtToday, setEvtToday] = useState()
   const [nav, setNav] = useState(0)
   const [clicked, setClicked] = useState()
   const [events, setEvents] = useState(
@@ -88,12 +79,9 @@ const Calendar = () => {
   const { days, dateDisplay } = useDate(events, nav)
 
   const evt = eventCollection.find({}).fetch()
+  const daysWithEvents = evt.length != 0 ? eventDays(evt) : []
 
-  if (evt.length != 0) {
-    console.log("ello chum")
-    const daysWithEvents = eventDays(evt)
-    console.log(daysWithEvents)
-  }
+  let evtsToday = []
 
   return (
     <>
@@ -117,18 +105,25 @@ const Calendar = () => {
         </div>
 
         <div id="calendar">
-          {days.map((d, index) => (
-            //d.date != "" ? console.log(eventToday(d.date)) : console.log([]),
-            <Day
-              key={index}
-              day={d}
-              onClick={() => {
-                if (d.value !== "padding") {
-                  setClicked(d.date)
-                }
-              }}
-            />
-          ))}
+          {days.map(
+            (d, index) => (
+              (evtsToday = daysWithEvents.includes(d.date)
+                ? eventsToday(d.date)
+                : []),
+              (
+                <Day
+                  key={index}
+                  day={d}
+                  onClick={() => {
+                    if (d.value !== "padding") {
+                      setClicked(d.date)
+                    }
+                  }}
+                  evtsToday={evtsToday}
+                />
+              )
+            )
+          )}
         </div>
       </div>
     </>
