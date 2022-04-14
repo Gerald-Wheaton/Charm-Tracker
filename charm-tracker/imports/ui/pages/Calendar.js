@@ -26,6 +26,8 @@ import NavBar from '../NavBar';
   return(
     <>
       <div id="calendar_page">
+
+      <NavBar />
         <CalendarHeader 
           dateDisplay={dateDisplay}
           onNext={() => setNav(nav + 1)}
