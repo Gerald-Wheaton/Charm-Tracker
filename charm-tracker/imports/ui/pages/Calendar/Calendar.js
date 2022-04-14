@@ -28,8 +28,9 @@ const Calendar = () => {
   return (
     <>
       <NavBar />
+      <TasksSidebar />
       <div id="container">
-        <TasksSidebar />
+        <img className="openbtn phoneOnly" src="/images/taskicon.png" onClick={() => openNav()} />
         <CalendarHeader
           dateDisplay={dateDisplay}
           onNext={() => setNav(nav + 1)}
@@ -62,6 +63,11 @@ const Calendar = () => {
       </div>
     </>
   )
+}
+
+function openNav() {
+  document.getElementById("tasksbar").style.width = "100vw";
+  document.getElementById("container").style.marginLeft = "100vw";
 }
 
 export default Calendar
