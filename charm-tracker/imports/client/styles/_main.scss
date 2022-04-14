@@ -38,8 +38,10 @@ h1 {
 @import 'mobile/loginMobile';
 @import 'mobile/navMobile';
 @import 'mobile/contactDetails';
+@import 'mobile/taskBarMobile';
 
 // web styles
 @import 'components/login';
 @import 'components/nav';
-@import 'components/calendar'
+@import 'components/calendar';
+@import 'components/taskBar';

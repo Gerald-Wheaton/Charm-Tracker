@@ -1,33 +1,46 @@
 import React from "react"
-import Paper from "@mui/material/Paper"
 import Divider from "@mui/material/Divider"
 import MenuList from "@mui/material/MenuList"
 import MenuItem from "@mui/material/MenuItem"
 import ListItemText from "@mui/material/ListItemText"
 import ListItemIcon from "@mui/material/ListItemIcon"
-import Typography from "@mui/material/Typography"
-import ContentCut from "@mui/icons-material/ContentCut"
-import ContentCopy from "@mui/icons-material/ContentCopy"
-import ContentPaste from "@mui/icons-material/ContentPaste"
-import Cloud from "@mui/icons-material/Cloud"
 import { faBarsProgress } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { taskCollection } from "../../../api/tasks"
 
-const Task = props => {
-  const { task, completed } = props
+const Task = (props) => {
+  const { task, completed, taskId } = props
+
+  const taskCompleted = (taskId) => {
+    taskCollection.update({ _id: taskId }, { $set: { completed: true } })
+  }
+
+  const taskUndone = (taskId) => {
+    taskCollection.update({ _id: taskId }, { $set: { completed: false } })
+  }
+
   return (
-    <MenuList>
-      <MenuItem>
-        <ListItemIcon>
-          <FontAwesomeIcon icon={faBarsProgress} />
-        </ListItemIcon>
-        <ListItemText>Event {completed ? "Done" : "Incomplete"}</ListItemText>
-      </MenuItem>
-      <MenuItem>
-        <ListItemIcon style={{ overflow: "wrap" }}>{task}</ListItemIcon>
-      </MenuItem>
-      <Divider />
-    </MenuList>
+    <ul>
+      <li>
+        {completed ? (
+          <label className="check">
+            <input
+              type="checkbox"
+              defaultChecked
+              className="checked"
+              onChange={() => taskUndone(taskId)}
+            />
+            <div className="checkbox"></div>
+          </label>
+        ) : (
+          <label className="check">
+            <input type="checkbox" onChange={() => taskCompleted(taskId)} />
+            <div className="checkbox"></div>
+          </label>
+        )}
+        {completed ? <p className="task completed">{task}</p> : <p className="task">{task}</p>}
+      </li>
+    </ul>
   )
 }
 

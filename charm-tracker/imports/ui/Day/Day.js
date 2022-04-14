@@ -18,7 +18,7 @@ export const Day = ({ day, onClick, evtsToday }) => {
       {evtsToday.length !== 0 ? (
         <div>
           {React.Children.toArray(
-            evtsToday.map((e, index) => <Event title={e.email} />)
+            evtsToday.map((e, index) => <Event title={e.eventName} />)
           )}
         </div>
       ) : null}

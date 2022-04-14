@@ -27,7 +27,7 @@ export const NewEventModal = ({ onSave, onClose, clicked }) => {
   return(
     <>
       <div id="newEventModal">
-        <h2>New Event</h2>
+        <h2>Create a New Event?</h2>
 
         <input 
           className={error ? 'error' : ''}
@@ -46,7 +46,7 @@ export const NewEventModal = ({ onSave, onClose, clicked }) => {
               setError(true);
             }
           }} 
-          id="saveButton">Save</button>
+          id="saveButton">Create</button>
 
 
         <button 
