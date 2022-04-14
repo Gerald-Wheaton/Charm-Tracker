@@ -1,27 +1,35 @@
-import React from "react";
-import { vendorCollection } from "../api/vendors";
+import React from "react"
+import { vendorCollection } from "../api/vendors"
+import { vendorTypeCollection } from "../api/vendorTypes"
 
 const VendorSelectionModal = (props) => {
-    const { vendorTypeID } = props
+  const { vendorType } = props
 
-    let vendors = vendorCollection.find({ type: vendorTypeID }).fetch();
+  const closeModal = () => {
+      document.getElementById("modal-holder").style.display = "none"
+  }
 
-    // return the component
-    return (
-        <div class="certainVendors">
-            <fieldset className="vendor">
-                <legend>{vendorTypeName}</legend>
+  let NewvendorType = vendorTypeCollection.find({name: vendorType}).fetch()
+  let vendors = vendorCollection.find({ type: NewvendorType[0]._id }).fetch()
 
-                {/* render the names of the vendors along with the delete functions for them */}
-                {vendors.map((vendor) => {
-                    return (
-                        <div key={vendor._id}></div>
-                        );
-                    })
-                }
-            </fieldset>
-        </div>
-    )
+  // return the component
+  return (
+    <div class="certainVendors" id="myModal">
+      <div className="modal-content">
+        <span className="close">&times;</span>
+              <select name="removeVendorName" id="removeVendorNames">
+                  {vendors.map((vendor) => {
+                      return (
+                          <option key={vendor._id} value={vendor._id}>
+                              {vendor.name}
+                          </option>
+                      );
+                  })}
+              </select>
+              <button onClick={()=> {closeModal()}}></button>
+      </div>
+    </div>
+  )
 }
 
 export default VendorSelectionModal

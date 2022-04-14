@@ -17,6 +17,7 @@ const TasksSidebar = (props) => {
   return (
     <>
       <div id="tasksbar" className="sidebar">
+        <div className="todaystask">
         <a href="#" className="closebtn phoneOnly" onClick={() => closeNav()}>
           &times;
         </a>
@@ -38,6 +39,7 @@ const TasksSidebar = (props) => {
             <p>No tasks for today</p>
           </div>
         )}
+        </div>
         <hr />
         <EventTaskBar />
       </div>
