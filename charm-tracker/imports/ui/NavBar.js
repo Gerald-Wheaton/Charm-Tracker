@@ -7,7 +7,7 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div className="hamburger"
+      <div id="hamburger" className="hamburger"
         onClick={() => OpenNav()}>
         <div className="line"></div>
         <div className="line"></div>
