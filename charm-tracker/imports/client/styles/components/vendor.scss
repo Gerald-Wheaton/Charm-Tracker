@@ -4,12 +4,17 @@ div.editVendors{
 
 
  button{
+    padding: 0;
+    border: none;
+    background: none;
     width:50%;
+    height:2.5rem;
     margin-left:7rem;
     margin-top:1rem;
     background: #B8D9C6;
     border-radius: 15px;
     color: #000000;
+    filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.15));
 
 }
 input{
@@ -27,14 +32,18 @@ div.removeVendor{
         width:100%;
     }
 button{
-    margin-top:1rem;
-
-    width:50%;
-    margin-left:7rem;
-
-    background: #B8D9C6;
-    border-radius: 15px;
-    color: #000000;
+ 
+        padding: 0;
+        border: none;
+        background: none;
+        width:50%;
+        height:2.5rem;
+        margin-left:7rem;
+        margin-top:1rem;
+        background: #B8D9C6;
+        border-radius: 15px;
+        color: #000000;
+        filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.15));
 }
 }
 div.certainVendors{
@@ -44,14 +53,21 @@ div.certainVendors{
         width:100%;
     }
     button{
+        padding: 0;
+        border: none;
+        background: none;
         width:50%;
-        margin-left:7rem;
+        height:2.5rem;
+        margin-left:7.5rem;
         margin-top:1rem;
         background: #B8D9C6;
         border-radius: 15px;
         color: #000000;
+        filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.15));
     }
 }
+
+
 
 @media only screen and (max-width: 800px) {
     div.editVendors{
@@ -60,12 +76,17 @@ div.certainVendors{
 
     
      button{
+        padding: 0;
+        border: none;
+        background: none;
         width:50%;
-        margin-left:7rem;
+               margin-left:7rem;
         margin-top:1rem;
         background: #B8D9C6;
         border-radius: 15px;
         color: #000000;
+        height:2.5rem;
+        filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.15));
 
     }
     input{
@@ -80,13 +101,17 @@ div.certainVendors{
         }
     button{
         margin-top:1rem;
+        padding: 0;
 
+        border: none;
+        background: none;
         width:50%;
         margin-left:7rem;
-
+        height:2.5rem;
         background: #B8D9C6;
         border-radius: 15px;
         color: #000000;
+        filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.15));
     }
     }
 
@@ -108,6 +133,7 @@ div.certainVendors{
             background: #B8D9C6;
             border-radius: 15px;
             color: #000000;
+            filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.15));
         }
     }
 }

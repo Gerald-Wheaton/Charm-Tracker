@@ -71,7 +71,7 @@ const Reports = () => {
           Date
         </label>
 
-        <label>
+        <label >
           <input type="radio" name="filter" value="email"></input>
           Email
         </label>
@@ -84,7 +84,7 @@ const Reports = () => {
         <br />
 
         {/* filters input */}
-        <label class="dateFilter">Start Date:
+        <label className="dateFilter">Start Date:
           <input type="date" class= "startDate" name="startDate"></input>
         </label>
         <label className="dateFilter">Stop Date:
@@ -104,7 +104,7 @@ const Reports = () => {
       <div id="eventReports"></div>
 
       {/* print button */}
-      <button onClick={() =>window.print()}>Print this page</button>
+      <button class= "print"onClick={() =>window.print()}>Print this page</button>
     </div>
   )
 }
