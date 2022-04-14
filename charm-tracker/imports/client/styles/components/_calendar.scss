@@ -147,7 +147,23 @@
     max-width: 64em;
     padding: 0;
   }
+  .logo{   
+    display: flex;
 
+    width:60%;
+  }
+  #headerDisplay{
+    display: flex;
+    align-items: center;
+    font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
+    justify-content: center;
+    margin-bottom: 2em;
+    background: #B8D9C6;
+    color: #fff;
+    min-height: 10vh;
+    text-align: center;
+    padding:1em;
+  } 
 @media only screen and (max-width: 768px) {
   .logo{   
     display: flex;
