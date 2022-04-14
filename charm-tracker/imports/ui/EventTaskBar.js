@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import ReactDom from "react-dom"
 import { Link } from "react-router-dom"
 import { eventCollection } from "../api/events"
+import Task from "./pages/Calendar/Task"
+import VendorTask from "./pages/Calendar/VendorTask"
 import RemoveEvents from "./RemoveEvents"
 
 const EventTaskBar = () => {
@@ -17,10 +19,9 @@ const EventTaskBar = () => {
       console.log(selectedEvent)
       element = (
         <>
-          <p>
-            {selectedEvent[0].name.firstName} {selectedEvent[0].name.lastName}'s event is
-            selected
-          </p>
+          <div>
+            <VendorTask task={"Select Caterer"} completed={false} vendorType="Caterer" />
+          </div>
         </>
       )
     } else {
@@ -45,7 +46,8 @@ const EventTaskBar = () => {
       </select>
       <div id="eventTasks">{/* task for event will be rendered here */}</div>
           {client ? (<div><Link className="linkasbutton" to={{ pathname: "/edit-event/"+ client }}>Edit Event</Link>
-              <RemoveEvents eventID={client} /></div>) : (<div>Nothing</div>)}
+              <RemoveEvents eventID={client} /></div>) : (<div></div>)}
+              <div id="modal-holder"></div>
     </div>
   )
 }

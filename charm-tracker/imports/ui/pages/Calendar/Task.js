@@ -1,11 +1,4 @@
 import React from "react"
-import Divider from "@mui/material/Divider"
-import MenuList from "@mui/material/MenuList"
-import MenuItem from "@mui/material/MenuItem"
-import ListItemText from "@mui/material/ListItemText"
-import ListItemIcon from "@mui/material/ListItemIcon"
-import { faBarsProgress } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { taskCollection } from "../../../api/tasks"
 
 const Task = (props) => {
