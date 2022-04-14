@@ -37,7 +37,7 @@ const TasksSidebar = (props) => {
 
 function closeNav() {
   document.getElementById("tasksbar").style.width = "0";
-  document.getElementById("container").style.marginLeft = "0";
+  document.getElementById("container").style.display = "block";
 }
 
 export default TasksSidebar
