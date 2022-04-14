@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { taskCollection } from "../../../api/tasks"
 import { eventCollection } from "../../../api/events"
-import SyncLoader from "react-spinners/SyncLoader"
+import BounceLoader from "react-spinners/BounceLoader"
 import Task from "./Task"
 import Paper from "@mui/material/Paper"
 
@@ -23,12 +23,18 @@ const TasksSidebar = (props) => {
           <div>
             {React.Children.toArray(
               task.map((tsk, index) => (
-                <Task task={tsk.task} completed={tsk.completed} taskId={tsk._id} />
+                <Task
+                  task={tsk.task}
+                  completed={tsk.completed}
+                  taskId={tsk._id}
+                />
               ))
             )}
           </div>
         ) : (
-          <SyncLoader color={"#36D7B7"} />
+          <div className="loader">
+            <BounceLoader color={"#B8D9C6"} />
+          </div>
         )}
       </div>
     </>
@@ -36,8 +42,9 @@ const TasksSidebar = (props) => {
 }
 
 function closeNav() {
-  document.getElementById("tasksbar").style.width = "0";
-  document.getElementById("container").style.display = "block";
+  document.getElementById("tasksbar").style.width = "0"
+  document.getElementById("container").style.display = "block"
+  document.getElementById("hamburger").style.display = "block"
 }
 
 export default TasksSidebar

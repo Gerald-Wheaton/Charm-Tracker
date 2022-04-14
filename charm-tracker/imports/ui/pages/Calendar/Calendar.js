@@ -68,6 +68,7 @@ const Calendar = () => {
 function openNav() {
   document.getElementById("tasksbar").style.width = "100vw";
   document.getElementById("container").style.display = "none";
+  document.getElementById("hamburger").style.display = "none";
 }
 
 export default Calendar
