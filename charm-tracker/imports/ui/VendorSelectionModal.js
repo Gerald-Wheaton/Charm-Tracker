@@ -26,7 +26,7 @@ const VendorSelectionModal = (props) => {
                       );
                   })}
               </select>
-              <button onClick={()=> {closeModal()}}></button>
+              <button onClick={()=> {closeModal()}}>Submit</button>
       </div>
     </div>
   )
