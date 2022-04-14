@@ -6,7 +6,7 @@ import Task from "./Task"
 import Paper from "@mui/material/Paper"
 import EventTaskBar from "../../EventTaskBar"
 
-const TasksSidebar = (props) => {
+const TasksSidebar = props => {
   const today = new Date().toLocaleDateString()
   const task = taskCollection
     .find({
