@@ -37,9 +37,9 @@ const CreateNewEvent = () => {
   // this will need some refactoring to pull the previous customers from the database and add them to selections
 
   const tellEmWutsUp = () => {
-    toast.warn(message, {
+    toast.success(message, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
