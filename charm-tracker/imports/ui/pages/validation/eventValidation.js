@@ -3,13 +3,22 @@ import validator from "validator"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-const invalidField = value => {
+// typeError may be set to either "emptyField" for "invalidField"
+const invalidField = (value, typeError) => {
   const options = {
-    autoClose: 5000,
+    autoClose: 2000,
     className: "",
     position: toast.POSITION.TOP_RIGHT,
   }
-  toast.error(`Enter valid ${value}`, options)
+
+  switch (typeError) {
+    case "invalidField":
+      toast.error(`Enter valid ${value}`, options)
+      break
+    case "emptyField":
+      toast.error(`Please fill in the ${value} field`, options)
+      break
+  }
 }
 
 const stripPrice = data => {
@@ -25,7 +34,7 @@ const stripPrice = data => {
 const validatePrice = data => {
   let price = stripPrice(data)
   if (isNaN(price)) {
-    invalidField("PRICE")
+    invalidField("PRICE", "invalidField")
     return ""
   }
   return price
@@ -37,7 +46,7 @@ const validateZip = data => {
   let nineDigZip = new RegExp("^[0-9]{5}[-][0-9]{5}$")
 
   if (!fiveDigZip.test(data.zip.value) && !nineDigZip.test(data.zip.value)) {
-    invalidField("ZIP CODE")
+    invalidField("ZIP CODE", "invalidField")
     return ""
   }
 
@@ -46,7 +55,7 @@ const validateZip = data => {
 
 const validatePhone = data => {
   if (!validator.isMobilePhone(data.PhoneNum.value)) {
-    invalidField("PHONE NUMBER")
+    invalidField("PHONE NUMBER", "invalidField")
     return ""
   }
   return data.PhoneNum.value
@@ -54,7 +63,7 @@ const validatePhone = data => {
 
 const validateEmail = data => {
   if (!validator.isEmail(data.email.value)) {
-    invalidField("EMAIL")
+    invalidField("EMAIL", "invalidField")
     return ""
   }
   return data.email.value
@@ -65,7 +74,7 @@ const validateYear = data => {
   let selectedYear = data.date.value.substring(0, 4)
 
   if (selectedYear < currYear) {
-    invalidField("YEAR")
+    invalidField("YEAR", "invalidField")
     return ""
   }
   return data.date.value
@@ -77,10 +86,18 @@ const validateTimeSpan = (data, startTime) => {
       ? true
       : false
   if (!validTimeSpan) {
-    invalidField("STOP TIME")
+    invalidField("STOP TIME", "invalidField")
     return ""
   }
   return data.stopTime.value
+}
+
+const preventEmptyField = (fieldValue, fieldName) => {
+  if (!fieldValue) {
+    invalidField(fieldName, "emptyField")
+    return ""
+  }
+  return fieldValue
 }
 
 const validateState = data => {
@@ -147,7 +164,7 @@ const validateState = data => {
   ]
 
   if (!states.includes(data.state.value)) {
-    invalidField("STATE")
+    invalidField("STATE", "invalidField")
     return ""
   }
   return data.state.value
@@ -161,4 +178,5 @@ export {
   validateYear,
   validateTimeSpan,
   validateState,
+  preventEmptyField,
 }
