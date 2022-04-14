@@ -23,7 +23,8 @@ This component gets all of the details necessary for creating an event.
 
 Contact datails are added to the client collection.
 
-Event details along with the name stored as {firstname, lastName} and email are stored in event collection.
+Event details along with the name stored as {firstname, lastName} and email are stored in event collection. Client ID for event is 
+stored as clientID.
 */
 
 const CreateNewEvent = () => {

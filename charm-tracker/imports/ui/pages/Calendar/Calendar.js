@@ -26,10 +26,11 @@ const Calendar = () => {
   const { days, dateDisplay } = useDate(events, nav)
 
   return (
-    <>
+    <div id="calendarContainer">
       <NavBar />
+      <TasksSidebar />
       <div id="container">
-        <TasksSidebar />
+        <img className="openbtn phoneOnly" src="/images/taskicon.png" onClick={() => openNav()} />
         <CalendarHeader
           dateDisplay={dateDisplay}
           onNext={() => setNav(nav + 1)}
@@ -60,8 +61,14 @@ const Calendar = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
+}
+
+function openNav() {
+  document.getElementById("tasksbar").style.width = "100vw";
+  document.getElementById("container").style.display = "none";
+  document.getElementById("hamburger").style.display = "none";
 }
 
 export default Calendar
