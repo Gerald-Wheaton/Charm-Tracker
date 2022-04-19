@@ -46,8 +46,8 @@ Current Version: 0.30
 * Login Page - Handles user authentication and password retrieval.
 * Vendor Input - Handles adding and removing vendors, adding and removing vendor types, and uploading new additions or changes to the internal MongoDB.
 * Event Input - Handles creating a new event, including contact info of client and event details like location and price, and includes uploading to MongoDB.
-* Report Generation - Handles queries that search the MongoDB for data by searching a date range, name of event, or both. Report output is printed to the screen.
-* Edit Event - Handles editing existing events in the MongoDB. Event information is edited here, not contact info (PENDING).
+* Report Generation - Handles queries that search the MongoDB for data by searching a date range, name of customer, or both. Report output is printed to the screen.
+* Edit Event - Handles editing existing events in the MongoDB. Event and contact information is edited here.
 * Calendar - Handles viewing of events on a calendar, as well as showing upcoming tasks that need to be done for the day and tasks associated with the event selected from the calendar.
 * Activity Stream - Gives a greater view of upcoming tasks for users to complete, including past due, upcoming, and today's tasks.
 
