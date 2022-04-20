@@ -5,11 +5,11 @@ import ReactDom from "react-dom"
 import VendorSelectionModal from "../../VendorSelectionModal"
 
 const VendorTask = (props) => {
-    const { task, completed, vendorType } = props
+    const { task, completed, vendorType, eventID } = props
 
     const openModal = () => {
         document.getElementById("modal-holder").style.display = "block"
-       ReactDom.render(<VendorSelectionModal vendorType={vendorType} />, document.getElementById("modal-holder"))
+       ReactDom.render(<VendorSelectionModal vendorType={vendorType} eventID={eventID} />, document.getElementById("modal-holder"))
     }
     
 

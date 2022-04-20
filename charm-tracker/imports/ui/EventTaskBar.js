@@ -11,16 +11,16 @@ const EventTaskBar = () => {
 
   const getEvent = (event) => {
     let element = <p>No event selected</p>
-    if (event.target.value != "") {
+    if (event.target.customer.value != "") {
       let selectedEvent = eventCollection
-        .find({ _id: event.target.value })
+        .find({ _id: event.target.customer.value })
         .fetch()
-      setClient(event.target.value)
+      setClient(event.target.customer.value)
       console.log(selectedEvent)
       element = (
         <>
           <div>
-            <VendorTask task={"Select Caterer"} completed={false} vendorType="Caterer" />
+            <VendorTask task={"Select Caterer"} completed={false} vendorType="Caterer" eventId={event.target.customer.value} />
           </div>
         </>
       )
